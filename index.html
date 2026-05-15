@@ -1,106 +1,397 @@
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>WebsGo — Página principal</title>
-  <link rel="stylesheet" href="style-principal.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Q&L InfraTech — Infraestructura, telecomunicaciones, sistemas eléctricos, obras civiles y desarrollo de software.">
+  <title>Q&L InfraTech – Infraestructura & Tecnología</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="logo">WebsGo</div>
-    <nav>
-  <a href="index.html" class="nav-link">Inicio</a>
-  <div class="dropdown">
-    <a href="servicios.html" class="nav-link">Servicios</a>
-    <div class="dropdown-content">
-      <a href="servicio1.html">Negocios</a>
-      <a href="servicio2.html">Especiales</a>
-      <a href="servicio3.html">Personales</a>
-    </div>
-  </div>
-  <a href="contacto.html" class="nav-link">Contacto</a>
-</nav>
 
+  <header class="header">
+    <div class="header-container">
+      <a href="index.html" class="brand">
+        <img src="imagenes/logo.png" alt="Logo InfraTech" class="brand-logo">
+        <span class="logo"> InfraTech</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html" class="nav-link active">Inicio</a>
+        <a href="servicios.html" class="nav-link">Servicios</a>
+        <a href="contacto.html" class="nav-link">Contacto</a>
+      </nav>
+      <button class="menu-toggle" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </header>
 
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-text">
-        <h1>✨ Tu página web, diseñada a tu medida ✨</h1>
-        <p class="lead">¡Hola y bienvenido/a!👋 Soy Franklin — creo sitios web futuristas, rápidos y optimizados para tu negocio.</p>
-        <p class="desc">Mi objetivo es ayudarte a tener un espacio propio en internet. Cada diseño que realizo es único, pensado en lo que tú necesitas: 
-        páginas modernas, fáciles de navegar y que se ven bien en computadoras y celulares. Aquí encontrarás creatividad, practicidad y un estilo que se adapta a ti.</p>
-        <p class="desc">Si tienes una idea en mente, yo me encargaré de transformarla en una página web atractiva y funcional. 🚀</p>
-        <a class="btn-primary" href="servicios.html">Ver servicios</a>
+  <section class="hero-banner">
+    <div class="hero-bg-image" style="background-image: url('imagenes/imagen1')"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content-wrap centered">
+      <div class="hero-content centered-content">
+        <h1>Construimos el futuro con <span class="gradient-text">innovación</span> y precisión</h1>
+        <p>Infraestructura, telecomunicaciones, sistemas eléctricos, obras civiles y desarrollo de software. Lo que necesitas, lo hacemos realidad.</p>
+        <div class="hero-stats">
+          <div class="stat"><strong>+50</strong><span>Proyectos entregados</span></div>
+          <div class="stat"><strong>100%</strong><span>Personalizados</span></div>
+          <div class="stat"><strong>24/7</strong><span>Soporte directo</span></div>
+        </div>
+        <div class="hero-buttons">
+          <a href="servicios.html" class="btn-primary">Ver todos los servicios</a>
+          <a href="contacto.html" class="btn-outline">💬 Hablar por WhatsApp</a>
+        </div>
       </div>
+    </div>
+    <div class="floating-emojis">
+      <span class="fem f1">🚀</span>
+      <span class="fem f2">🏗️</span>
+      <span class="fem f3">⭐</span>
+      <span class="fem f4">🔌</span>
+      <span class="fem f5">✨</span>
+      <span class="fem f6">🔥</span>
+    </div>
+  </section>
 
-      <div class="hero-media">
-        <div class="media-frame">
-          <img src="assets/perfil.png" alt="Proyecto destacado" class="enhanced-img">
+  <section class="empresa-section">
+    <div class="container">
+      <div class="empresa-inner">
+        <span class="section-tag">Quiénes somos</span>
+        <h2 class="section-title" style="margin-bottom:1.5rem;">Q&L InfraTech</h2>
+        <p>Somos una empresa innovadora dedicada al desarrollo de proyectos de infraestructura, redes de telecomunicaciones, sistemas eléctricos, obras civiles y elaboración de proyectos. Además, contamos con un área especializada en desarrollo de software a medida.</p>
+        <p>Nuestro equipo combina experiencia técnica y visión innovadora para ofrecer soluciones integrales que transforman los proyectos de nuestros clientes en resultados concretos, eficientes y duraderos.</p>
+        <div class="empresa-pills">
+          <span class="empresa-pill">🏗️ Infraestructura</span>
+          <span class="empresa-pill">📡 Telecomunicaciones</span>
+          <span class="empresa-pill">⚡ Sistemas Eléctricos</span>
+          <span class="empresa-pill">🏢 Obras Civiles</span>
+          <span class="empresa-pill">💻 Desarrollo de Software</span>
+          <span class="empresa-pill">📋 Elaboración de Proyectos</span>
         </div>
       </div>
     </div>
   </section>
 
-  <main class="container">
-    <section class="features">
-      <h2>Qué ofrezco</h2>
-      <div class="grid">
-        <article class="card">
-          <h3>Páginas para negocios</h3>
-          <p>Landing pages, catálogos, promoción y más. Optimizado para conversión.</p>
-        </article>
-        <article class="card">
-          <h3>Páginas especiales</h3>
-          <p>Portfolios, páginas de evento, campañas y micro-sites.</p>
-        </article>
-        <article class="card">
-          <h3>Páginas personales</h3>
-          <p>Portafolios, CV interactivo y páginas personales con identidad única.</p>
-        </article>
+  <section class="carousel-section">
+    <div class="carousel-header">
+      <span class="section-tag">Portafolio</span>
+      <h2 class="section-title">Proyectos Recientes</h2>
+      <p class="section-sub">Mira algunos de los trabajos que hemos entregado</p>
+    </div>
+    <div class="carousel-wrapper">
+      <div class="carousel-track" id="carouselTrack">
+        <div class="carousel-slide">
+          <img src="assets/portafolio1.png" alt="Portafolio fotográfico">
+          <div class="slide-info"><h4>Portafolio Fotográfico</h4><span>Personal</span></div>
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/amor1.png" alt="Página romántica">
+          <div class="slide-info"><h4>Página Romántica</h4><span>Especial</span></div>
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/musico2.png" alt="Página de músico">
+          <div class="slide-info"><h4>Músico Profesional</h4><span>Personal</span></div>
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/ropa1.png" alt="Tienda de ropa">
+          <div class="slide-info"><h4>Tienda de Ropa</h4><span>Negocio</span></div>
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/restaurante1.png" alt="Restaurante">
+          <div class="slide-info"><h4>Restaurante con Menú Digital</h4><span>Negocio</span></div>
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/tecnologia1.png" alt="Tienda tecnológica">
+          <div class="slide-info"><h4>Tienda Tecnológica con Login</h4><span>Sistema</span></div>
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/portafolio2.png" alt="Portafolio 2">
+          <div class="slide-info"><h4>Portafolio Creativo</h4><span>Personal</span></div>
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/restaurante2.png" alt="Restaurante 2">
+          <div class="slide-info"><h4>Carta Digital Interactiva</h4><span>Negocio</span></div>
+        </div>
       </div>
-    </section>
+    </div>
+    <div class="carousel-controls">
+      <button class="car-btn" id="prevBtn">&#8592;</button>
+      <div class="car-dots" id="carDots"></div>
+      <button class="car-btn" id="nextBtn">&#8594;</button>
+    </div>
+  </section>
 
-    <section class="gallery">
-      <h2>Ejemplos</h2>
-      <div class="masonry" id="gallery">
-        <img class="gallery-item" src="assets/portafolio1.png" alt="Ejemplo 1">
-        <img class="gallery-item" src="assets/amor1.png" alt="Ejemplo 2">
-        <img class="gallery-item" src="assets/musico2.png" alt="Ejemplo 3">
-        <img class="gallery-item" src="assets/amor2.png" alt="Ejemplo 4">
-        <img class="gallery-item" src="assets/portafolio3.png" alt="Ejemplo 5">
+  <section class="what-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Capacidades</span>
+        <h2 class="section-title">Todo lo que podemos construir para ti <span class="emoji-spin">🛠️</span></h2>
+        <p class="section-sub">Infraestructura técnica, sistemas digitales, páginas web y soluciones con IA</p>
       </div>
-    </section>
+      <div class="capabilities-grid">
+        <div class="cap-card featured">
+          <div class="cap-icon emoji-pulse">🏗️</div>
+          <h3>Proyectos de Infraestructura</h3>
+          <p>Redes de telecomunicaciones, sistemas eléctricos, obras civiles y elaboración de expedientes técnicos completos.</p>
+          <ul class="cap-features">
+            <li>✓ Redes de telecomunicaciones</li>
+            <li>✓ Diseño de sistemas eléctricos</li>
+            <li>✓ Obras civiles y construcción</li>
+            <li>✓ Elaboración de expedientes técnicos</li>
+            <li>✓ Consultoría y supervisión</li>
+          </ul>
+          <span class="cap-badge">Infraestructura</span>
+        </div>
+        <div class="cap-card featured">
+          <div class="cap-icon emoji-pulse">🖥️</div>
+          <h3>Sistemas POS</h3>
+          <p>Sistema de punto de venta completo con inventario, ventas, reportes y más. Ideal para tiendas, restaurantes y negocios.</p>
+          <ul class="cap-features">
+            <li>✓ Control de inventario en tiempo real</li>
+            <li>✓ Gestión de ventas y facturas</li>
+            <li>✓ Reportes y estadísticas</li>
+            <li>✓ Múltiples usuarios con roles</li>
+            <li>✓ Panel de administración</li>
+          </ul>
+          <span class="cap-badge">Sistema complejo</span>
+        </div>
+        <div class="cap-card featured">
+          <div class="cap-icon emoji-pulse">🛒</div>
+          <h3>Tiendas Online</h3>
+          <p>Tienda virtual completa donde tus clientes pueden ver productos, hacer pedidos y contactarte directamente.</p>
+          <ul class="cap-features">
+            <li>✓ Catálogo de productos dinámico</li>
+            <li>✓ Carrito de compras</li>
+            <li>✓ Integración con WhatsApp</li>
+            <li>✓ Panel de gestión de productos</li>
+            <li>✓ Diseño adaptable al celular</li>
+          </ul>
+          <span class="cap-badge">Ecommerce</span>
+        </div>
+        <div class="cap-card">
+          <div class="cap-icon">🤖</div>
+          <h3>Soluciones con IA</h3>
+          <p>Integración de inteligencia artificial en tus sistemas y páginas: chatbots, automatización y análisis de datos.</p>
+          <ul class="cap-features">
+            <li>✓ Chatbots inteligentes</li>
+            <li>✓ Automatización de procesos</li>
+            <li>✓ Análisis y predicción de datos</li>
+          </ul>
+          <a href="contacto.html" class="cap-link">Consultar →</a>
+        </div>
+        <div class="cap-card">
+          <div class="cap-icon">📱</div>
+          <h3>Páginas Web para Negocios</h3>
+          <p>Landing pages para empresas, emprendimientos, restaurantes, salones y más. Diseño profesional y moderno.</p>
+          <ul class="cap-features">
+            <li>✓ Diseño profesional y moderno</li>
+            <li>✓ Galería de productos/servicios</li>
+            <li>✓ Botones de contacto directo</li>
+          </ul>
+          <a href="servicios.html" class="cap-link">Ver servicios →</a>
+        </div>
+        <div class="cap-card">
+          <div class="cap-icon">✨</div>
+          <h3>Páginas Especiales y Personales</h3>
+          <p>Portafolios creativos, páginas para cumpleaños, aniversarios, artistas, músicos y profesionales independientes.</p>
+          <ul class="cap-features">
+            <li>✓ Diseño totalmente personalizado</li>
+            <li>✓ Fotos, música y animaciones</li>
+            <li>✓ Acceso desde cualquier dispositivo</li>
+          </ul>
+          <a href="servicios.html" class="cap-link">Ver servicios →</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section class="ordenar1">
-  <div class="bloque izquierda">
-    <h2>¿Por qué elegirme? ⚙️</h2>
-    <p>🚀 Diseños modernos y responsivos</p>         
-    <p>⚡ Carga rápida y optimización SEO</p>
-    <p>📱 Adaptado para celulares y tablets</p> 
-    <p>🤝 Comunicación directa por WhatsApp</p>
-  </div>
+  <section class="features-section" style="background-image: url('imagenes/imagen2'); background-size: cover; background-position: center; position: relative;">
+    <div class="section-bg-overlay"></div>
+    <div class="container" style="position:relative;z-index:2;">
+      <div class="features-layout">
+        <div class="features-left">
+          <h2>¿Por qué elegirnos?</h2>
+          <div class="feature-list">
+            <div class="feature-item">
+              <span>🎯</span>
+              <div><h4>Soluciones a medida</h4><p>Cada proyecto se adapta exactamente a las necesidades del cliente, sin plantillas genéricas.</p></div>
+            </div>
+            <div class="feature-item">
+              <span>⚡</span>
+              <div><h4>Entrega puntual</h4><p>Cumplimos los plazos acordados. El tiempo de nuestros clientes es tan valioso como el nuestro.</p></div>
+            </div>
+            <div class="feature-item">
+              <span>💡</span>
+              <div><h4>Innovación constante</h4><p>Aplicamos las últimas tecnologías y metodologías para ofrecer soluciones eficientes y modernas.</p></div>
+            </div>
+            <div class="feature-item">
+              <span>🔧</span>
+              <div><h4>Soporte y revisiones incluidas</h4><p>Incluimos revisiones y ajustes post-entrega para que quedes 100% satisfecho.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="features-right">
+          <h2>Proceso de trabajo</h2>
+          <div class="steps">
+            <div class="step"><span class="step-num">1</span><div><h4>Consulta inicial gratis</h4><p>Nos cuentas tu idea y evaluamos qué solución es la mejor para ti.</p></div></div>
+            <div class="step"><span class="step-num">2</span><div><h4>Propuesta y presupuesto</h4><p>Te enviamos una propuesta clara con tiempos, funcionalidades y precio.</p></div></div>
+            <div class="step"><span class="step-num">3</span><div><h4>Diseño y desarrollo</h4><p>Comenzamos el trabajo y te compartimos avances para que puedas dar feedback.</p></div></div>
+            <div class="step"><span class="step-num">4</span><div><h4>Revisiones y entrega</h4><p>Ajustamos detalles y te entregamos tu proyecto listo para usar.</p></div></div>
+            <div class="step"><span class="step-num">5</span><div><h4>Soporte post-entrega</h4><p>Estamos disponibles para ayudarte si surge cualquier duda o cambio.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <div class="bloque derecha">
-    <h2>Mi proceso de trabajo 🧠</h2>
-    <ol>
-      <li>Conversamos tu idea y necesidades.</li>
-      <li>Te muestro un diseño previo.</li>
-      <li>Hago ajustes y empiezo el desarrollo.</li>
-      <li>Te entrego la web final lista para publicar.</li>
-    </ol>
-  </div>
-</section>
+  <section class="pricing-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Inversión</span>
+        <h2 class="section-title">Rangos de precio según proyecto <span class="emoji-pulse">💰</span></h2>
+        <p class="section-sub">Los precios finales se definen según tus necesidades. Consulta completamente gratis.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <div class="price-icon">📄</div>
+          <h3>Página Básica</h3>
+          <p>Presentación, portafolio o página especial</p>
+          <div class="price-range">Desde <strong>S/ 400</strong></div>
+          <ul><li>✓ Diseño personalizado</li><li>✓ Responsive (celular y PC)</li><li>✓ Entrega en 3-5 días</li></ul>
+          <a href="contacto.html" class="btn-price">Consultar gratis</a>
+        </div>
+        <div class="price-card highlighted">
+          <div class="badge-popular">Más pedido</div>
+          <div class="price-icon">🏪</div>
+          <h3>Página de Negocio</h3>
+          <p>Tienda, restaurante, empresa o emprendimiento</p>
+          <div class="price-range">Desde <strong>S/ 1000</strong></div>
+          <ul><li>✓ Catálogo de productos</li><li>✓ Botón WhatsApp integrado</li><li>✓ Galería de fotos</li><li>✓ Entrega en 5-7 días</li></ul>
+          <a href="contacto.html" class="btn-price">Consultar gratis</a>
+        </div>
+        <div class="price-card">
+          <div class="price-icon">⚙️</div>
+          <h3>Sistema / App Web</h3>
+          <p>POS, tienda online, sistema a medida</p>
+          <div class="price-range">Desde <strong>S/ 2000</strong></div>
+          <ul><li>✓ Base de datos</li><li>✓ Panel de administración</li><li>✓ Usuarios y roles</li><li>✓ Plazo según complejidad</li></ul>
+          <a href="contacto.html" class="btn-price">Consultar gratis</a>
+        </div>
+        <div class="price-card">
+          <div class="price-icon">🏗️</div>
+          <h3>Proyectos de Infraestructura</h3>
+          <p>Telecomunicaciones, sistemas eléctricos, obras civiles y elaboración de proyectos técnicos</p>
+          <div class="price-range" style="font-size:0.85rem;padding:1rem;">
+            <strong style="font-size:1.1rem;display:block;margin-bottom:0.4rem;">Cotización personalizada</strong>
+            Evaluación según alcance y requerimientos del proyecto
+          </div>
+          <ul><li>✓ Evaluación técnica gratuita</li><li>✓ Propuesta detallada</li><li>✓ Sin compromiso</li></ul>
+          <a href="https://wa.me/51914522586?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20proyectos%20de%20infraestructura" class="btn-price" target="_blank">💬 Consultar por WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <footer class="site-footer">
-     <h2>¿Listo para tener tu web?</h2>
-  <a href="contacto.html" class="btn-primary">Habla conmigo ahora</a>
+  <section class="cta-section" style="background-image: url('imagenes/imagen3'); background-size: cover; background-position: center; position: relative;">
+    <div class="section-bg-overlay" style="background: rgba(5,8,16,0.82);"></div>
+    <div class="container" style="position:relative;z-index:2;">
+      <div class="cta-box">
+        <h2>¿Tienes un proyecto? Hagámoslo realidad <span class="emoji-bounce">🚀</span></h2>
+        <p>Cuéntanos tu idea y recibe una propuesta sin costo ni compromiso</p>
+        <a href="https://wa.me/51914522586?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20sus%20servicios" class="btn-cta" target="_blank">💬 Hablar por WhatsApp ahora</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="brand" style="margin-bottom:0.75rem;display:inline-flex;">
+            <img src="imagenes/logo.png" alt="Logo" class="brand-logo">
+            <span class="logo">InfraTech</span>
+          </a>
+          <p>Infraestructura, telecomunicaciones, sistemas eléctricos, obras civiles y desarrollo de software.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <a href="index.html">Inicio</a>
+          <a href="servicios.html">Servicios</a>
+          <a href="contacto.html">Contacto</a>
+        </div>
+        <div class="footer-col">
+          <h4>Servicios</h4>
+          <a href="servicios.html">Páginas para Negocios</a>
+          <a href="servicios.html">Páginas Especiales</a>
+          <a href="servicios.html">Páginas Personales</a>
+          <a href="servicios.html">Infraestructura</a>
+          <a href="contacto.html">Sistemas y Apps</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <a href="https://wa.me/51914522586" target="_blank">📱 +51 914 522 586</a>
+          <p style="color:var(--text-muted);font-size:0.9rem;margin-top:0.5rem;">Respondemos en menos de 24h ⏰</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Q&L InfraTech. Todos los derechos reservados.</p>
+      </div>
+    </div>
   </footer>
 
-  <a id="wa-float" href="https://wa.me/51914522586?text=Hola%20Franklin%2C%20quiero%20informaci%C3%B3n%20sobre%20tus%20servicios" target="_blank" rel="noopener" aria-label="WhatsApp">
-    <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="white" d="M20.5 3.5A11.9 11.9 0 0 0 12 0C5.4 0 .3 5.1.3 11.7c0 2 .6 3.9 1.8 5.6L0 24l6.9-1.8c1.6 1 3.4 1.5 5.1 1.5 6.6 0 11.7-5.1 11.7-11.7 0-2.6-1-5-3.2-6.6zM12 21.5c-1.5 0-3-.4-4.3-1.1l-.3-.2-4 .9 1-4.1-.2-.3A8.9 8.9 0 0 1 3 11.7 8.9 8.9 0 0 1 12 2.8c4.9 0 8.8 4 8.8 8.9S16.9 21.5 12 21.5z"></path><path fill="white" d="M17 14.6c-.3-.2-1.8-.9-2-.9-.2 0-.4-.1-.6.1-.1.1-.5.4-.6.5-.1.1-.2.2-.1.4.1.2.7.8.9 1 .2.2.4.3.6.5.2.2.4.3.6.2.2-.1.9-.3 1.1-.4.2-.1.4-.2.6-.4.2-.2.4-.6.2-.9-.2-.3-.5-.6-.7-.8z"></path></svg>
+  <a href="https://wa.me/51914522586?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20sus%20servicios"
+     class="whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" width="24" height="24">
+      <path fill="currentColor" d="M20.5 3.5A11.9 11.9 0 0 0 12 0C5.4 0 .3 5.1.3 11.7c0 2 .6 3.9 1.8 5.6L0 24l6.9-1.8c1.6 1 3.4 1.5 5.1 1.5 6.6 0 11.7-5.1 11.7-11.7 0-2.6-1-5-3.2-6.6zM12 21.5c-1.5 0-3-.4-4.3-1.1l-.3-.2-4 .9 1-4.1-.2-.3A8.9 8.9 0 0 1 3 11.7 8.9 8.9 0 0 1 12 2.8c4.9 0 8.8 4 8.8 8.9S16.9 21.5 12 21.5z"/>
+    </svg>
   </a>
 
-<script src="script.js"></script>
+  <div class="lightbox" id="lightbox">
+    <span class="close-lightbox">&times;</span>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    const track = document.getElementById('carouselTrack');
+    const slides = track ? track.querySelectorAll('.carousel-slide') : [];
+    const dotsContainer = document.getElementById('carDots');
+    let current = 0;
+    let autoPlay;
+    function getVisible() { return window.innerWidth < 640 ? 1 : window.innerWidth < 1024 ? 2 : 3; }
+    function totalPages() { return Math.ceil(slides.length / getVisible()); }
+    function buildDots() {
+      if (!dotsContainer) return;
+      dotsContainer.innerHTML = '';
+      for (let i = 0; i < totalPages(); i++) {
+        const d = document.createElement('button');
+        d.className = 'car-dot' + (i === current ? ' active' : '');
+        d.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(d);
+      }
+    }
+    function goTo(idx) {
+      const pages = totalPages();
+      current = (idx + pages) % pages;
+      const visible = getVisible();
+      const slideW = track.parentElement.offsetWidth / visible;
+      track.style.transform = `translateX(-${current * visible * slideW}px)`;
+      buildDots();
+    }
+    function next() { goTo(current + 1); }
+    function prev() { goTo(current - 1); }
+    if (track && slides.length) {
+      document.getElementById('nextBtn')?.addEventListener('click', () => { next(); resetAuto(); });
+      document.getElementById('prevBtn')?.addEventListener('click', () => { prev(); resetAuto(); });
+      buildDots();
+      window.addEventListener('resize', () => goTo(0));
+      autoPlay = setInterval(next, 4000);
+    }
+    function resetAuto() { clearInterval(autoPlay); autoPlay = setInterval(next, 4000); }
+  </script>
 </body>
 </html>
