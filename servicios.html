@@ -1,69 +1,295 @@
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Servicios — WebsGo</title>
-  <link rel="stylesheet" href="style-servicios.css">
+  <title>Servicios – Q&L InfraTech</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="site-header">
-    <h1>WebsGo</h1>
-    <nav class="menu">
-  <a href="index.html" class="nav-link">Inicio</a>
-  <div class="dropdown">
-    <a href="servicios.html" class="nav-link">Servicios</a>
-    <div class="dropdown-content">
-      <a href="servicio1.html">Páginas para negocios</a>
-      <a href="servicio2.html">Páginas especiales</a>
-      <a href="servicio3.html">Páginas personales</a>
+  <header class="header">
+    <div class="header-container">
+      <a href="index.html" class="brand">
+        <img src="imagenes/logo.png" alt="Logo Q&L InfraTech" class="brand-logo">
+        <span class="logo">Q&L InfraTech</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Inicio</a>
+        <a href="servicios.html" class="nav-link active">Servicios</a>
+        <a href="contacto.html" class="nav-link">Contacto</a>
+      </nav>
+      <button class="menu-toggle" aria-label="Menú"><span></span><span></span><span></span></button>
     </div>
-  </div>
-  <a href="contacto.html" class="nav-link">Contacto</a>
-</nav>
   </header>
 
-  <section class="extra">
-    <h1 class="titu">💡 ¿Qué tipo de página necesitas?</h1>
-  </section>
-
-  <main class="servicios-intro">
-    <p>
-      Cada cliente tiene un propósito único, y por eso mis páginas web son 100% personalizadas.  
-      No importa si buscas vender, sorprender o mostrar tu trabajo, tengo una solución adaptada para ti.
-    </p>
-    <p>
-      Mi servicio de diseño web está pensado para ajustarse a tus necesidades.  
-      No creo páginas iguales: cada proyecto tiene su propio estilo, pensado para transmitir exactamente lo que quieres.
-    </p>
-    <p>
-      Te acompaño desde la idea inicial hasta la entrega final, asesorándote en cómo organizar tu contenido,  
-      elegir un diseño atractivo y lograr que tu página sea rápida, funcional y fácil de usar tanto en computadora como en celular.
-    </p>
-    <p>
-      Dentro de mis servicios principales encontrarás tres categorías que se adaptan a lo que normalmente buscan mis clientes:
-      páginas para negocios, páginas especiales y páginas personales.
-    </p>
-  </main>
-
-  <section class="servicios-botones">
-    <h2>Explora mis servicios principales 🚀</h2>
-    <div class="botonera">
-      <a href="servicio1.html" class="card-servicio">
-        <h3>Páginas para negocios</h3>
-        <p>Perfectas para empresas, tiendas o emprendedores que quieren vender más.</p>
-      </a>
-
-      <a href="servicio2.html" class="card-servicio">
-        <h3>Páginas especiales</h3>
-        <p>Ideales para eventos, portafolios, campañas o proyectos creativos.</p>
-      </a>
-
-      <a href="servicio3.html" class="card-servicio">
-        <h3>Páginas personales</h3>
-        <p>Tu espacio personal en internet: CV, biografía o presentación profesional.</p>
-      </a>
+  <section class="page-header" style="padding-top:130px;padding-bottom:60px;text-align:center;">
+    <div class="container">
+      <span class="section-tag">Servicios</span>
+      <h1 style="font-size:clamp(2rem,5vw,3.5rem);margin:1rem 0;">¿Qué tipo de proyecto necesitas?</h1>
+      <p style="color:var(--text-muted);font-size:1.1rem;max-width:650px;margin:0 auto;">Desde infraestructura y telecomunicaciones hasta sistemas complejos y páginas web. Cada proyecto se construye a medida.</p>
     </div>
   </section>
+
+  <!-- Servicios principales -->
+  <section style="padding:60px 20px 90px;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Categorías</span>
+        <h2 class="section-title">Nuestros servicios principales</h2>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;max-width:1200px;margin:0 auto;">
+
+        <!-- Páginas para Negocios -->
+        <div class="service-card">
+          <div class="card-icon">💼</div>
+          <h3>Páginas para Negocios</h3>
+          <p>Diseñamos y desarrollamos landing pages, catálogos digitales y páginas de presentación para empresas, tiendas, restaurantes, salones de belleza y todo tipo de emprendimientos. Tu negocio merece una presencia digital que atraiga clientes y transmita confianza.</p>
+          <ul class="cap-features" style="text-align:left;margin-top:1rem;">
+            <li>✓ Diseño moderno y personalizado</li>
+            <li>✓ Adaptable a celular, tablet y PC</li>
+            <li>✓ Galería de productos o servicios</li>
+            <li>✓ Botón de contacto por WhatsApp</li>
+            <li>✓ Carga rápida y optimizada</li>
+            <li>✓ Entrega en 5-7 días</li>
+          </ul>
+        </div>
+
+        <!-- Páginas Especiales -->
+        <div class="service-card">
+          <div class="card-icon">🎉</div>
+          <h3>Páginas Especiales</h3>
+          <p>Regalos digitales únicos e inolvidables para cumpleaños, aniversarios, pedidas de mano o cualquier ocasión especial. Creamos experiencias interactivas con fotos, música, animaciones y mensajes personalizados que sorprenden a quien las recibe.</p>
+          <ul class="cap-features" style="text-align:left;margin-top:1rem;">
+            <li>✓ Diseño 100% personalizado</li>
+            <li>✓ Fotos, videos y música de fondo</li>
+            <li>✓ Animaciones y efectos visuales</li>
+            <li>✓ Acceso desde cualquier dispositivo</li>
+            <li>✓ Enlace para compartir fácilmente</li>
+            <li>✓ Entrega en 3-5 días</li>
+          </ul>
+        </div>
+
+        <!-- Páginas Personales -->
+        <div class="service-card">
+          <div class="card-icon">✨</div>
+          <h3>Páginas Personales</h3>
+          <p>Portafolios creativos y profesionales para artistas, músicos, fotógrafos, diseñadores y cualquier profesional independiente que quiera destacar en internet. Muestra tu trabajo de la mejor manera y conecta con nuevos clientes u oportunidades.</p>
+          <ul class="cap-features" style="text-align:left;margin-top:1rem;">
+            <li>✓ Galería de trabajos y proyectos</li>
+            <li>✓ Sección de habilidades y servicios</li>
+            <li>✓ Formulario o botón de contacto</li>
+            <li>✓ Integración con redes sociales</li>
+            <li>✓ Diseño elegante y profesional</li>
+            <li>✓ Entrega en 4-6 días</li>
+          </ul>
+        </div>
+
+        <!-- Infraestructura -->
+        <div class="service-card" style="border-color:rgba(0,170,255,0.3);background:linear-gradient(135deg,rgba(0,170,255,0.06),var(--card-bg));">
+          <div class="card-icon">🏗️</div>
+          <h3>Proyectos de Infraestructura</h3>
+          <p>Somos especialistas en el desarrollo de proyectos de infraestructura técnica. Diseñamos, planificamos y ejecutamos soluciones en redes de telecomunicaciones, sistemas eléctricos, obras civiles y elaboración de expedientes técnicos completos para empresas y entidades.</p>
+          <ul class="cap-features" style="text-align:left;margin-top:1rem;">
+            <li>✓ Redes de telecomunicaciones</li>
+            <li>✓ Diseño de sistemas eléctricos</li>
+            <li>✓ Obras civiles y construcción</li>
+            <li>✓ Elaboración de expedientes técnicos</li>
+            <li>✓ Consultoría y asesoría especializada</li>
+            <li>✓ Supervisión de proyectos</li>
+          </ul>
+          <a href="https://wa.me/51914522586?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20proyectos%20de%20infraestructura" class="cap-link" style="display:inline-block;margin-top:1rem;" target="_blank">💬 Consultar por WhatsApp →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Servicios avanzados -->
+  <section style="padding:80px 20px;background:var(--dark);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Proyectos avanzados</span>
+        <h2 class="section-title">Sistemas y soluciones complejas</h2>
+        <p class="section-sub">Para negocios que necesitan más que una página: automatización, gestión y funcionalidades avanzadas</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;max-width:1100px;margin:0 auto;">
+        <div class="cap-card featured">
+          <div class="cap-icon">🖥️</div>
+          <h3>Sistema POS</h3>
+          <p>Punto de venta completo para tu negocio. Controla ventas, inventario, empleados y genera reportes desde cualquier dispositivo.</p>
+          <ul class="cap-features">
+            <li>✓ Registro y cierre de caja</li>
+            <li>✓ Inventario con alertas de stock</li>
+            <li>✓ Historial de ventas y reportes</li>
+            <li>✓ Múltiples usuarios con permisos</li>
+          </ul>
+          <a href="contacto.html" class="cap-link">Solicitar →</a>
+        </div>
+        <div class="cap-card featured">
+          <div class="cap-icon">🛒</div>
+          <h3>Tienda Online</h3>
+          <p>Tu negocio vendiendo en internet. Con catálogo dinámico, carrito de compras, pedidos por WhatsApp y panel de gestión.</p>
+          <ul class="cap-features">
+            <li>✓ Productos con categorías y precios</li>
+            <li>✓ Carrito y proceso de pedido</li>
+            <li>✓ Notificaciones automáticas</li>
+            <li>✓ Panel para agregar/editar productos</li>
+          </ul>
+          <a href="contacto.html" class="cap-link">Solicitar →</a>
+        </div>
+        <div class="cap-card featured">
+          <div class="cap-icon">🗄️</div>
+          <h3>Sistema de Registro / Login</h3>
+          <p>Plataformas con usuarios registrados, roles y acceso diferenciado. Ideal para academias, membresías, clínicas y más.</p>
+          <ul class="cap-features">
+            <li>✓ Registro e inicio de sesión seguro</li>
+            <li>✓ Perfil de usuario personalizable</li>
+            <li>✓ Roles: admin, cliente, vendedor</li>
+            <li>✓ Base de datos en la nube</li>
+          </ul>
+          <a href="contacto.html" class="cap-link">Solicitar →</a>
+        </div>
+        <div class="cap-card featured">
+          <div class="cap-icon">📊</div>
+          <h3>Panel de Administración</h3>
+          <p>Dashboard completo para gestionar tu negocio desde un solo lugar. Datos, estadísticas, clientes y más en tiempo real.</p>
+          <ul class="cap-features">
+            <li>✓ Gráficos y estadísticas visuales</li>
+            <li>✓ Gestión de clientes o productos</li>
+            <li>✓ Exportar datos a Excel/PDF</li>
+            <li>✓ Acceso desde cualquier dispositivo</li>
+          </ul>
+          <a href="contacto.html" class="cap-link">Solicitar →</a>
+        </div>
+        <div class="cap-card featured">
+          <div class="cap-icon">📅</div>
+          <h3>Sistema de Reservas o Citas</h3>
+          <p>Permite a tus clientes reservar citas o turnos en línea. Perfecto para salones, clínicas, consultorios o academias.</p>
+          <ul class="cap-features">
+            <li>✓ Calendario interactivo</li>
+            <li>✓ Confirmación automática</li>
+            <li>✓ Historial de citas</li>
+            <li>✓ Notificaciones por WhatsApp</li>
+          </ul>
+          <a href="contacto.html" class="cap-link">Solicitar →</a>
+        </div>
+        <div class="cap-card">
+          <div class="cap-icon">💡</div>
+          <h3>¿Tienes otra idea?</h3>
+          <p>Si tienes un proyecto en mente que no está en esta lista, escríbenos. Si se puede construir, lo podemos hacer.</p>
+          <ul class="cap-features">
+            <li>✓ Evaluación gratuita</li>
+            <li>✓ Propuesta personalizada</li>
+            <li>✓ Sin compromiso</li>
+          </ul>
+          <a href="contacto.html" class="cap-link">Consultar ahora →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Precios -->
+  <section class="pricing-section" style="background:var(--darker);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Inversión</span>
+        <h2 class="section-title">Precios orientativos</h2>
+        <p class="section-sub">Presupuesto exacto siempre después de conversar sobre tu proyecto</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <div class="price-icon">📄</div>
+          <h3>Básico</h3>
+          <p>Página de presentación o página especial</p>
+          <div class="price-range">Desde <strong>S/ 400</strong></div>
+          <ul><li>✓ Diseño personalizado</li><li>✓ Responsive</li><li>✓ Entrega 3-5 días</li></ul>
+          <a href="contacto.html" class="btn-price">Consultar</a>
+        </div>
+        <div class="price-card highlighted">
+          <div class="badge-popular">Más pedido</div>
+          <div class="price-icon">🏪</div>
+          <h3>Negocio</h3>
+          <p>Tienda, catálogo o página completa de empresa</p>
+          <div class="price-range">Desde <strong>S/ 1000</strong></div>
+          <ul><li>✓ Catálogo de productos</li><li>✓ WhatsApp integrado</li><li>✓ Galería de fotos</li><li>✓ 5-7 días</li></ul>
+          <a href="contacto.html" class="btn-price">Consultar</a>
+        </div>
+        <div class="price-card">
+          <div class="price-icon">⚙️</div>
+          <h3>Sistema</h3>
+          <p>POS, tienda online, app web a medida</p>
+          <div class="price-range">Desde <strong>S/ 2000</strong></div>
+          <ul><li>✓ Base de datos</li><li>✓ Panel de admin</li><li>✓ Usuarios y roles</li><li>✓ Plazo variable</li></ul>
+          <a href="contacto.html" class="btn-price">Consultar</a>
+        </div>
+        <div class="price-card">
+          <div class="price-icon">🏗️</div>
+          <h3>Infraestructura</h3>
+          <p>Redes de telecomunicaciones, sistemas eléctricos, obras civiles y elaboración de proyectos técnicos</p>
+          <div class="price-range" style="font-size:0.85rem;padding:1rem;">
+            <strong style="font-size:1rem;display:block;margin-bottom:0.4rem;">Cotización personalizada</strong>
+            Evaluación según alcance del proyecto
+          </div>
+          <ul><li>✓ Evaluación técnica gratuita</li><li>✓ Propuesta detallada</li><li>✓ Sin compromiso</li></ul>
+          <a href="https://wa.me/51914522586?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20proyectos%20de%20infraestructura" class="btn-price" target="_blank">💬 Consultar por WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-box">
+        <h2>¿No sabes qué tipo de servicio necesitas?</h2>
+        <p>Cuéntanos tu idea y te asesoramos sin costo. Juntos encontramos la mejor solución.</p>
+        <a href="https://wa.me/51914522586?text=Hola,%20quiero%20asesor%C3%ADa%20sobre%20mi%20proyecto" class="btn-cta" target="_blank">💬 Pedir asesoría gratis</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="brand" style="margin-bottom:0.75rem;display:inline-flex;">
+            <img src="imagenes/logo.png" alt="Logo" class="brand-logo">
+            <span class="logo">Q&L InfraTech</span>
+          </a>
+          <p>Infraestructura, telecomunicaciones, sistemas eléctricos, obras civiles y desarrollo de software.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <a href="index.html">Inicio</a>
+          <a href="servicios.html">Servicios</a>
+          <a href="contacto.html">Contacto</a>
+        </div>
+        <div class="footer-col">
+          <h4>Servicios</h4>
+          <a href="servicios.html">Páginas para Negocios</a>
+          <a href="servicios.html">Páginas Especiales</a>
+          <a href="servicios.html">Páginas Personales</a>
+          <a href="servicios.html">Infraestructura</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <a href="https://wa.me/51914522586" target="_blank">📱 +51 914 522 586</a>
+          <p style="color:var(--text-muted);font-size:0.9rem;margin-top:0.5rem;">Respondemos en menos de 24h ⏰</p>
+        </div>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2025 Q&L InfraTech. Todos los derechos reservados.</p></div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/51914522586?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20sus%20servicios"
+     class="whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" width="24" height="24">
+      <path fill="currentColor" d="M20.5 3.5A11.9 11.9 0 0 0 12 0C5.4 0 .3 5.1.3 11.7c0 2 .6 3.9 1.8 5.6L0 24l6.9-1.8c1.6 1 3.4 1.5 5.1 1.5 6.6 0 11.7-5.1 11.7-11.7 0-2.6-1-5-3.2-6.6zM12 21.5c-1.5 0-3-.4-4.3-1.1l-.3-.2-4 .9 1-4.1-.2-.3A8.9 8.9 0 0 1 3 11.7 8.9 8.9 0 0 1 12 2.8c4.9 0 8.8 4 8.8 8.9S16.9 21.5 12 21.5z"/>
+    </svg>
+  </a>
   <script src="script.js"></script>
 </body>
 </html>
