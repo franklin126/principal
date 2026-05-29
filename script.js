@@ -1,61 +1,96 @@
- document.addEventListener('click', function(e){
-    const t = e.target;
-    if(t.classList.contains('gallery-item') || t.classList.contains('enhanced-img')){
-      openLightbox(t.src, t.alt);
+'use strict';
+
+const menuToggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('.nav');
+
+if (menuToggle && nav) {
+  menuToggle.addEventListener('click', () => {
+    nav.classList.toggle('active');
+    menuToggle.classList.toggle('active');
+  });
+
+  const navLinks = nav.querySelectorAll('.nav-link');
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('active');
+      menuToggle.classList.remove('active');
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!nav.contains(e.target) && !menuToggle.contains(e.target)) {
+      nav.classList.remove('active');
+      menuToggle.classList.remove('active');
     }
   });
+}
 
-  function openLightbox(src, alt){
-    let box = document.createElement('div');
-    box.className = 'lb';
-    box.innerHTML = `\n    <div class="lb-inner">\n      <img src="${src}" alt="${alt}">\n      <button class="lb-close">Cerrar</button>\n    </div>\n  `;
-    document.body.appendChild(box);
-    box.addEventListener('click', function(ev){
-      if(ev.target.classList.contains('lb') || ev.target.classList.contains('lb-close')){
-        box.remove();
-      }
-    });
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const closeLightbox = document.querySelector('.close-lightbox');
+
+const galleryImages = document.querySelectorAll('.gallery-img, .project-item img, .hero-image img');
+
+galleryImages.forEach(img => {
+  img.addEventListener('click', () => {
+    if (lightbox && lightboxImg) {
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  });
+});
+
+if (closeLightbox) {
+  closeLightbox.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+}
+
+if (lightbox) {
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && lightbox && lightbox.classList.contains('active')) {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
   }
+});
 
-  const lbStyles = document.createElement('style');
-  lbStyles.innerHTML = `
-  .lb{position:fixed;inset:0;background:rgba(2,6,23,0.85);display:flex;align-items:center;justify-content:center;z-index:2000}
-  .lb-inner{max-width:90%;max-height:90%;}
-  .lb-inner img{max-width:100%;max-height:80vh;border-radius:10px}
-  .lb-close{display:block;margin:14px auto 0;padding:8px 12px;border-radius:8px;background:rgba(255,255,255,0.06);color:#fff;border:0}
-  `;
-  document.head.appendChild(lbStyles);
-
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(ent=>{
-      if(ent.isIntersecting){
-        ent.target.style.opacity = 1;
-        ent.target.style.transform = 'translateY(0)';
-        io.unobserve(ent.target);
-      }
-    });
-  },{threshold:0.15});
-
-  document.querySelectorAll('.card, .gallery-item, .project, .examples .example').forEach(el=>{
-    el.style.opacity = 0; el.style.transform = 'translateY(14px)'; el.style.transition = 'all .7s cubic-bezier(.2,.9,.3,1)';
-    io.observe(el);
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (href === '#' || href === '') return;
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if (target) {
+      const headerHeight = document.querySelector('.header')?.offsetHeight || 80;
+      const targetPosition = target.offsetTop - headerHeight - 20;
+      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+    }
   });
+});
 
-  const wa = document.getElementById('wa-float');
-  if(wa) wa.setAttribute('title','Chatear por WhatsApp');
+const header = document.querySelector('.header');
 
-  const imagenes = document.querySelectorAll(".imagen");
-  const visor = document.getElementById("visor");
-  const imgGrande = document.getElementById("imgGrande");
-
-  imagenes.forEach(img => {
-    img.addEventListener("click", () => {
-      imgGrande.src = img.src;
-      visor.classList.add("mostrar");
-    });
+if (header) {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.5)';
+    } else {
+      header.style.boxShadow = 'none';
+    }
   });
+}
 
-  visor.addEventListener("click", () => {
-  visor.classList.remove("mostrar");
-  });
-
+document.querySelectorAll('a[href="#"]').forEach(link => {
+  link.addEventListener('click', e => e.preventDefault());
+});
