@@ -1,159 +1,335 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Q&L InfraTech — Contacto</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto – Q&L InfraTech</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .page-hero { padding: 9rem 0 4.5rem; position:relative; overflow:hidden; }
+    .page-hero::before {
+      content:''; position:absolute; inset:0;
+      background:
+        radial-gradient(ellipse 55% 70% at 90% 40%, rgba(6,182,212,0.1) 0%, transparent 60%),
+        linear-gradient(160deg, var(--bg2) 0%, var(--bg) 100%);
+    }
+    .page-hero-grid {
+      position:absolute; inset:0;
+      background-image:
+        linear-gradient(rgba(37,99,235,0.04) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(37,99,235,0.04) 1px,transparent 1px);
+      background-size:55px 55px;
+    }
+    .page-hero-inner { position:relative; z-index:1; }
+    .page-hero h1 { margin-bottom:0.85rem; animation:fade-up 0.6s 0.05s both; }
+    .page-hero .sub { animation:fade-up 0.6s 0.15s both; }
+
+    /* ── CONTACT LAYOUT ── */
+    .contact-section { }
+    .contact-grid {
+      display:grid; grid-template-columns:1fr 1.35fr;
+      gap:4.5rem; align-items:start;
+    }
+
+    /* Left info */
+    .contact-info h2 { margin-bottom:0.85rem; }
+    .contact-info > p { color:var(--muted2); font-size:0.92rem; margin-bottom:2rem; line-height:1.75; }
+    .info-cards { display:flex; flex-direction:column; gap:0.9rem; margin-bottom:2rem; }
+    .info-card {
+      display:flex; gap:1rem; align-items:center;
+      background:rgba(255,255,255,0.025); border:1px solid var(--border);
+      border-radius:10px; padding:1rem 1.2rem;
+      transition:border-color 0.2s;
+    }
+    .info-card:hover { border-color:rgba(37,99,235,0.22); }
+    .info-card-icon { font-size:1.4rem; flex-shrink:0; }
+    .info-card strong { display:block; font-size:0.88rem; margin-bottom:0.1rem; }
+    .info-card span { font-size:0.82rem; color:var(--cyan); }
+
+    /* Social links */
+    .social-row { display:flex; gap:0.65rem; flex-wrap:wrap; }
+    .social-btn {
+      display:inline-flex; align-items:center; gap:0.45rem;
+      padding:0.5rem 1rem;
+      background:rgba(255,255,255,0.04); border:1px solid var(--border);
+      border-radius:8px; font-size:0.82rem; color:var(--muted2);
+      transition:all 0.2s;
+    }
+    .social-btn:hover { background:rgba(37,99,235,0.12); border-color:rgba(37,99,235,0.28); color:var(--white); }
+
+    .form-card {
+      background:var(--card); border:1px solid var(--border);
+      border-radius:16px; padding:2.25rem;
+    }
+    .form-card h3 { margin-bottom:1.5rem; font-size:1.25rem; }
+    .form-group { margin-bottom:1.1rem; }
+    .form-group label {
+      display:block; font-size:0.78rem; font-weight:700;
+      letter-spacing:0.04em; color:var(--muted2); margin-bottom:0.38rem;
+      text-transform:uppercase;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width:100%; padding:0.75rem 1rem;
+      background:rgba(255,255,255,0.04); border:1px solid var(--border);
+      border-radius:9px; color:var(--white);
+      font-family:var(--font-b); font-size:0.9rem;
+      outline:none; transition:border-color 0.2s, box-shadow 0.2s;
+      appearance:none;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color:var(--muted); }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color:rgba(37,99,235,0.45);
+      box-shadow:0 0 0 3px rgba(37,99,235,0.1);
+    }
+    .form-group textarea { resize:vertical; min-height:115px; }
+    .form-group select option { background:#0a1122; }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+    .char-count { font-size:0.75rem; color:var(--muted); text-align:right; margin-top:0.3rem; }
+    .btn-submit {
+      width:100%; padding:0.88rem;
+      background:linear-gradient(135deg,var(--blue),#1d4ed8);
+      color:#fff; font-weight:700; font-size:0.95rem; font-family:var(--font-b);
+      border:none; border-radius:9px; cursor:pointer;
+      box-shadow:0 4px 18px rgba(37,99,235,0.38);
+      transition:all 0.22s; display:flex; align-items:center; justify-content:center; gap:0.5rem;
+    }
+    .btn-submit:hover { transform:translateY(-2px); box-shadow:0 8px 26px rgba(37,99,235,0.5); }
+    .btn-submit:disabled { opacity:0.7; cursor:not-allowed; transform:none; }
+    .form-note {
+      text-align:center; margin-top:0.85rem;
+      font-size:0.78rem; color:var(--muted);
+    }
+    .form-success {
+      display:none; text-align:center;
+      padding:2.5rem 1rem;
+    }
+    .form-success .success-icon { font-size:3rem; margin-bottom:1rem; }
+    .form-success h4 { font-size:1.2rem; margin-bottom:0.5rem; color:var(--cyan); }
+    .form-success p { color:var(--muted2); font-size:0.9rem; }
+
+    .faq-section { background:var(--bg2); }
+    .faq-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+    .faq-item {
+      background:var(--card); border:1px solid var(--border);
+      border-radius:var(--r); padding:1.4rem; cursor:pointer;
+    }
+    .faq-q {
+      display:flex; justify-content:space-between; align-items:center;
+      font-size:0.9rem; font-weight:600; gap:0.5rem; margin-bottom:0;
+    }
+    .faq-arrow { font-size:0.75rem; color:var(--muted2); transition:transform 0.25s; flex-shrink:0; }
+    .faq-a {
+      font-size:0.85rem; color:var(--muted2); line-height:1.65;
+      max-height:0; overflow:hidden; transition:max-height 0.35s ease, margin-top 0.3s;
+    }
+    .faq-item.open .faq-a { max-height:200px; margin-top:0.75rem; }
+    .faq-item.open .faq-arrow { transform:rotate(180deg); }
+    .faq-item:hover { border-color:rgba(37,99,235,0.22); }
+
+    @media(max-width:1024px){ .contact-grid { grid-template-columns:1fr; gap:2.5rem; } }
+    @media(max-width:768px){
+      .form-row { grid-template-columns:1fr; }
+      .faq-grid { grid-template-columns:1fr; }
+    }
+  </style>
 </head>
 <body>
 
-  <header class="header">
-    <div class="header-container">
+  <header class="header" id="hdr">
+    <div class="container header-inner">
       <a href="index.html" class="brand">
-        <img src="imagenes/logo.png" alt="Logo Q&L InfraTech" class="brand-logo">
-        <span class="logo">Q&L InfraTech</span>
+        <img src="imagenes/logo.png" alt="Logo Q&L InfraTech">
+        <span class="brand-name">InfraTech</span>
       </a>
-      <nav class="nav">
+      <nav>
         <a href="index.html" class="nav-link">Inicio</a>
         <a href="servicios.html" class="nav-link">Servicios</a>
         <a href="contacto.html" class="nav-link active">Contacto</a>
+        <a href="https://wa.me/51914522586?text=Hola" target="_blank" class="nav-wa">💬 WhatsApp</a>
       </nav>
-      <button class="menu-toggle" aria-label="Menú"><span></span><span></span><span></span></button>
+      <button class="hamburger" id="hmb" aria-label="Menú"><span></span><span></span><span></span></button>
+    </div>
+    <div class="mob-nav" id="mobnav">
+      <a href="index.html" class="nav-link">Inicio</a>
+      <a href="servicios.html" class="nav-link">Servicios</a>
+      <a href="contacto.html" class="nav-link active">Contacto</a>
     </div>
   </header>
 
-  <div class="contacto-page">
-
-    <div class="contacto-hero">
-      <span class="section-tag">Contacto</span>
-      <h1>Hablemos de tu <span class="gradient-text">proyecto</span></h1>
-      <p>Cuéntanos tu idea y te respondemos con una propuesta personalizada. La primera consulta siempre es gratuita.</p>
+  <div class="page-hero">
+    <div class="page-hero-grid"></div>
+    <div class="container page-hero-inner">
+      <h1>¿Tienes un proyecto? <span class="gradient-text">Hablemos</span></h1>
+      <p class="sub">Cuéntanos tu idea y recibe una propuesta sin costo ni compromiso. Respondemos en menos de 24 horas.</p>
     </div>
-
-    <div class="contacto-grid">
-
-      <!-- Formulario WhatsApp -->
-      <div class="wa-form-section">
-        <h3>💬 Envíanos un mensaje</h3>
-        <p>Completa lo que puedas. Te redirigiremos a WhatsApp con tu mensaje listo para enviar.</p>
-
-        <div class="form-group">
-          <label for="nombre">Nombre <span class="form-optional">(opcional)</span></label>
-          <input type="text" id="nombre" placeholder="Tu nombre o empresa">
-        </div>
-
-        <div class="form-group">
-          <label for="motivo">Motivo de contacto</label>
-          <select id="motivo">
-            <option value="">Selecciona un motivo...</option>
-            <option value="Infraestructura y telecomunicaciones">🏗️ Infraestructura / Telecomunicaciones</option>
-            <option value="Sistema eléctrico u obra civil">⚡ Sistema Eléctrico / Obra Civil</option>
-            <option value="Elaboración de proyecto técnico">📋 Elaboración de Proyecto Técnico</option>
-            <option value="Página web para negocio">💼 Página Web para Negocio</option>
-            <option value="Página especial o personal">🎉 Página Especial / Personal</option>
-            <option value="Sistema POS o tienda online">🖥️ Sistema POS / Tienda Online</option>
-            <option value="Solución con inteligencia artificial">🤖 Solución con IA</option>
-            <option value="Otro proyecto o consulta">💡 Otro / Consulta general</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="descripcion">Descripción <span class="form-optional">(opcional)</span></label>
-          <textarea id="descripcion" rows="4" placeholder="Cuéntanos más sobre tu proyecto o lo que necesitas..."></textarea>
-        </div>
-
-        <button class="btn-send-wa" onclick="enviarWhatsApp()">
-          <svg viewBox="0 0 24 24" width="20" height="20">
-            <path fill="white" d="M20.5 3.5A11.9 11.9 0 0 0 12 0C5.4 0 .3 5.1.3 11.7c0 2 .6 3.9 1.8 5.6L0 24l6.9-1.8c1.6 1 3.4 1.5 5.1 1.5 6.6 0 11.7-5.1 11.7-11.7 0-2.6-1-5-3.2-6.6zM12 21.5c-1.5 0-3-.4-4.3-1.1l-.3-.2-4 .9 1-4.1-.2-.3A8.9 8.9 0 0 1 3 11.7 8.9 8.9 0 0 1 12 2.8c4.9 0 8.8 4 8.8 8.9S16.9 21.5 12 21.5z"/>
-          </svg>
-          Enviar por WhatsApp
-        </button>
-      </div>
-
-      <!-- Info de contacto -->
-      <div class="contacto-card contacto-info">
-        <span class="contacto-card-icon">📋</span>
-        <h3>Información de contacto</h3>
-
-        <div class="info-item">
-          <span>📱</span>
-          <div>
-            <strong>WhatsApp</strong>
-            <p>+51 914 522 586</p>
-          </div>
-        </div>
-
-        <div class="info-item">
-          <span>⏰</span>
-          <div>
-            <strong>Tiempo de respuesta</strong>
-            <p>Menos de 24 horas</p>
-          </div>
-        </div>
-
-        <div class="info-item">
-          <span>🌎</span>
-          <div>
-            <strong>Cobertura</strong>
-            <p>Perú y proyectos remotos</p>
-          </div>
-        </div>
-
-        <div class="info-item">
-          <span>🤝</span>
-          <div>
-            <strong>Primera consulta</strong>
-            <p>Gratuita y sin compromiso</p>
-          </div>
-        </div>
-
-        <div class="info-item">
-          <span>🏗️</span>
-          <div>
-            <strong>Especialidades</strong>
-            <p>Infraestructura, telecomunicaciones, sistemas eléctricos, obras civiles, software e IA</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="contacto-nota">
-      ⏰ Respondemos en menos de 24 horas. La asesoría inicial es completamente gratuita.
-    </div>
-
   </div>
+
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-grid reveal">
+
+        <div class="contact-info">
+          <h2>Estamos listos para <span class="gradient-text">ayudarte</span></h2>
+          <p>Puedes escribirnos directamente por WhatsApp y te respondemos inmediatamente. La consulta es gratis y sin compromiso.</p>
+
+          <div class="info-cards">
+            <div class="info-card">
+              <div class="info-card-icon">📱</div>
+              <div>
+                <strong>WhatsApp directo</strong>
+                <span>+51 914 522 586</span>
+              </div>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">⏰</div>
+              <div>
+                <strong>Tiempo de respuesta</strong>
+                <span>Menos de 24 horas</span>
+              </div>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🌎</div>
+              <div>
+                <strong>Cobertura</strong>
+                <span>Todo Perú · Proyectos remotos</span>
+              </div>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">💬</div>
+              <div>
+                <strong>Consulta inicial</strong>
+                <span>100% gratuita y sin compromiso</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <h3>Envíanos tu consulta ✉️</h3>
+          <div id="formWrap">
+            
+            <div class="form-group">
+              <label>Nombre completo</label>
+              <input type="text" id="nombre" placeholder="Ej. Juan Pérez" required>
+            </div>
+            <div class="form-group">
+              <label>Tipo de servicio </label>
+              <select id="servicio" required>
+                <option value="">Selecciona una opción...</option>
+                <option>Sistema POS (punto de venta)</option>
+                <option>Página web para negocio o empresa</option>
+                <option>Portafolio personal o página especial</option>
+                <option>Tienda online / Ecommerce</option>
+                <option>Automatización o solución con IA</option>
+                <option>Proyecto de telecomunicaciones</option>
+                <option>Otro / No sé aún</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Cuéntanos sobre tu proyecto </label>
+              <textarea id="mensaje" placeholder="Describe brevemente qué necesitas, qué problema quieres resolver, o cualquier detalle que nos ayude a entender tu proyecto..." required oninput="updateCount(this)"></textarea>
+              <div class="char-count" id="charCount">0 / 500 caracteres</div>
+            </div>
+            <div class="form-group">
+              <label>¿Cuándo lo necesitas?</label>
+              <select id="urgencia">
+                <option value="">Selecciona...</option>
+                <option>Lo antes posible</option>
+                <option>En 1-2 semanas</option>
+                <option>En 1 mes</option>
+                <option>Sin prisa, solo consulto</option>
+              </select>
+            </div>
+            <button class="btn-submit" id="submitBtn" onclick="enviar()">
+              🚀 Enviar consulta por WhatsApp
+            </button>
+          </div>
+          <div class="form-success" id="formSuccess">
+            <div class="success-icon">✅</div>
+            <h4>¡Mensaje enviado!</h4>
+            <p>Gracias por contactarnos. Se abrió WhatsApp con tu consulta. Te responderemos pronto.</p>
+            <button onclick="resetForm()" class="btn btn-ghost" style="margin-top:1.25rem;">Enviar otra consulta</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-header center reveal">
+        <h2>Lo que siempre <span class="gradient-text">nos preguntan</span></h2>
+      </div>
+      <div class="faq-grid reveal">
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">¿Cuánto tiempo toma hacer una página web? <span class="faq-arrow">▼</span></div>
+          <div class="faq-a">Depende del tipo. Una página básica o portafolio toma 1-2 días. Una página de negocio completa toma 3-6 días. Un sistema POS o tienda online puede tomar 1-2 semanas según la complejidad.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">¿Necesito tener todo claro para consultar? <span class="faq-arrow">▼</span></div>
+          <div class="faq-a">Para nada. Muchos clientes llegan con una idea general y nosotros les ayudamos a definir qué necesitan exactamente. La consulta es gratuita y sin compromiso.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">¿Cómo es el proceso de pago? <span class="faq-arrow">▼</span></div>
+          <div class="faq-a">Generalmente pedimos un adelanto del 50% para comenzar y el resto contra entrega del proyecto. Para proyectos de infraestructura el esquema puede variar según el contrato.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">¿Incluyen soporte después de entregar? <span class="faq-arrow">▼</span></div>
+          <div class="faq-a">Sí. Incluimos un período de ajustes y correcciones post-entrega. Para soporte continuo o mantenimiento mensual tenemos planes adicionales.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">¿Trabajan con clientes fuera de Huancavelica? <span class="faq-arrow">▼</span></div>
+          <div class="faq-a">Sí. Para proyectos de software trabajamos de forma 100% remota con clientes de todo el Perú. Los proyectos de infraestructura dependen de la ubicación y accesibilidad.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">¿La página web funciona en el celular? <span class="faq-arrow">▼</span></div>
+          <div class="faq-a">Siempre. Todos nuestros proyectos web son 100% responsive, lo que significa que se ven y funcionan perfectamente tanto en computadora como en celular y tablet.</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col">
-          <a href="index.html" class="brand" style="margin-bottom:0.75rem;display:inline-flex;">
-            <img src="imagenes/logo.png" alt="Logo" class="brand-logo">
-            <span class="logo">Q&L InfraTech</span>
+          <a href="index.html" class="brand" style="margin-bottom:0.9rem;display:inline-flex;">
+            <img src="imagenes/logo.png" alt="Logo" style="width:38px;height:38px;object-fit:contain;">
+            <span class="brand-name" style="font-size:0.98rem;">InfraTech</span>
           </a>
-          <p>Infraestructura, telecomunicaciones, sistemas eléctricos, obras civiles y desarrollo de software.</p>
+          <p>Telecomunicaciones, sistemas eléctricos, sistemas pos y desarrollo de software.</p>
         </div>
         <div class="footer-col">
           <h4>Navegación</h4>
-          <a href="index.html">Inicio</a>
-          <a href="servicios.html">Servicios</a>
-          <a href="contacto.html">Contacto</a>
+          <div class="footer-links">
+            <a href="index.html">Inicio</a>
+            <a href="servicios.html">Servicios</a>
+            <a href="proyectos.html">Proyectos</a>
+            <a href="contacto.html">Contacto</a>
+          </div>
         </div>
         <div class="footer-col">
           <h4>Servicios</h4>
-          <a href="servicios.html">Páginas para Negocios</a>
-          <a href="servicios.html">Infraestructura</a>
-          <a href="servicios.html">Sistemas y Apps</a>
+          <div class="footer-links">
+            <a href="servicios.html#pos">Sistemas POS</a>
+            <a href="servicios.html#web-negocio">Páginas Web</a>
+            <a href="servicios.html#portafolio">Portafolios</a>
+            <a href="servicios.html#ecommerce">Tiendas Online</a>
+            <a href="servicios.html#infraestructura">Infraestructura</a>
+          </div>
         </div>
         <div class="footer-col">
           <h4>Contacto</h4>
-          <a href="https://wa.me/51914522586" target="_blank">📱 +51 914 522 586</a>
-          <p style="color:var(--text-muted);font-size:0.9rem;margin-top:0.5rem;">Respondemos en menos de 24h ⏰</p>
+          <div class="footer-links">
+            <a href="https://wa.me/51914522586" target="_blank">📱 +51 914 522 586</a>
+          </div>
+          <p style="margin-top:0.75rem;">Respondemos en menos de 24h ⏰</p>
         </div>
       </div>
       <div class="footer-bottom">
@@ -162,38 +338,67 @@
     </div>
   </footer>
 
-  <a href="https://wa.me/51914522586?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20sus%20servicios"
-     class="whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-    <svg viewBox="0 0 24 24" width="24" height="24">
-      <path fill="currentColor" d="M20.5 3.5A11.9 11.9 0 0 0 12 0C5.4 0 .3 5.1.3 11.7c0 2 .6 3.9 1.8 5.6L0 24l6.9-1.8c1.6 1 3.4 1.5 5.1 1.5 6.6 0 11.7-5.1 11.7-11.7 0-2.6-1-5-3.2-6.6zM12 21.5c-1.5 0-3-.4-4.3-1.1l-.3-.2-4 .9 1-4.1-.2-.3A8.9 8.9 0 0 1 3 11.7 8.9 8.9 0 0 1 12 2.8c4.9 0 8.8 4 8.8 8.9S16.9 21.5 12 21.5z"/>
-    </svg>
+  <a href="https://wa.me/51914522586?text=Hola" class="wa-fab" target="_blank" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" width="26" height="26"><path fill="currentColor" d="M20.5 3.5A11.9 11.9 0 0 0 12 0C5.4 0 .3 5.1.3 11.7c0 2 .6 3.9 1.8 5.6L0 24l6.9-1.8c1.6 1 3.4 1.5 5.1 1.5 6.6 0 11.7-5.1 11.7-11.7 0-2.6-1-5-3.2-6.6zM12 21.5c-1.5 0-3-.4-4.3-1.1l-.3-.2-4 .9 1-4.1-.2-.3A8.9 8.9 0 0 1 3 11.7 8.9 8.9 0 0 1 12 2.8c4.9 0 8.8 4 8.8 8.9S16.9 21.5 12 21.5z"/></svg>
   </a>
 
-  <script src="script.js"></script>
   <script>
-    function enviarWhatsApp() {
-      const nombre = document.getElementById('nombre').value.trim();
-      const motivo = document.getElementById('motivo').value;
-      const descripcion = document.getElementById('descripcion').value.trim();
-
-      let mensaje = 'Hola, me pongo en contacto desde su página web.';
-
-      if (nombre) mensaje += `\n\n👤 *Nombre:* ${nombre}`;
-      if (motivo) mensaje += `\n📌 *Motivo:* ${motivo}`;
-      if (descripcion) mensaje += `\n📝 *Descripción:* ${descripcion}`;
-
-      if (!nombre && !motivo && !descripcion) {
-        mensaje = 'Hola, quiero información sobre sus servicios.';
-      }
-
-      const url = `https://wa.me/51914522586?text=${encodeURIComponent(mensaje)}`;
-      window.open(url, '_blank');
-    }
-
-    // Permitir enviar con Enter en inputs (no en textarea)
-    document.getElementById('nombre').addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') enviarWhatsApp();
+    window.addEventListener('scroll', () => {
+      document.getElementById('hdr').style.boxShadow = window.scrollY>40?'0 4px 28px rgba(0,0,0,0.5)':'';
     });
+    document.getElementById('hmb').addEventListener('click', () => {
+      document.getElementById('mobnav').classList.toggle('open');
+    });
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((e,i) => {
+        if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('visible'),i*70); obs.unobserve(e.target); }
+      });
+    },{threshold:0.07});
+    document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+
+    function updateCount(el) {
+      document.getElementById('charCount').textContent = el.value.length + ' / 500 caracteres';
+    }
+    function enviar() {
+      const nombre   = document.getElementById('nombre').value.trim();
+      const servicio = document.getElementById('servicio').value;
+      const mensaje  = document.getElementById('mensaje').value.trim();
+      if (!nombre || !servicio || !mensaje) {
+        alert('Por favor completa los campos obligatorios (*)');
+        return;
+      }
+      const urgencia = document.getElementById('urgencia').value;
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      btn.textContent = 'Enviando...';
+      const text = encodeURIComponent(
+        `¡Hola! Envío desde el formulario web de Q&L InfraTech:\n\n` +
+        `👤 Nombre: ${nombre}\n` +
+        `🔧 Servicio: ${servicio}\n` +
+        `⏱️ Urgencia: ${urgencia || 'No indicado'}\n` +
+        `📝 Mensaje:\n${mensaje}`
+      );
+      window.open(`https://wa.me/51914522586?text=${text}`, '_blank');
+      setTimeout(() => {
+        document.getElementById('formWrap').style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      }, 600);
+    }
+    function resetForm() {
+      document.getElementById('formWrap').style.display = 'block';
+      document.getElementById('formSuccess').style.display = 'none';
+      document.getElementById('submitBtn').disabled = false;
+      document.getElementById('submitBtn').innerHTML = '🚀 Enviar consulta por WhatsApp';
+      ['nombre','mensaje'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('servicio').value = '';
+      document.getElementById('urgencia').value = '';
+      document.getElementById('charCount').textContent = '0 / 500 caracteres';
+    }
+    function toggleFaq(el) {
+      const isOpen = el.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('open'));
+      if (!isOpen) el.classList.add('open');
+    }
   </script>
 </body>
 </html>
