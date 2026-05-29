@@ -3,338 +3,621 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Q&L InfraTech — Infraestructura, telecomunicaciones, sistemas eléctricos, obras civiles y desarrollo de software.">
   <title>Q&L InfraTech – Infraestructura & Tecnología</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    
+
+    
+    .hero {
+      min-height: 88vh;
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding-top: 80px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background-image: url('imagenes/fondo.png');
+      background-size: cover;
+      background-position: center right;
+    }
+    
+    .hero-bg::after {
+      content:'';
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(4,7,15,0.97) 0%,
+        rgba(4,7,15,0.92) 42%,
+        rgba(4,7,15,0.55) 65%,
+        rgba(4,7,15,0.10) 100%
+      );
+    }
+    
+    .hero-grid-lines {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(37,99,235,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37,99,235,0.05) 1px, transparent 1px);
+      background-size: 55px 55px;
+    }
+    .hero-inner {
+      position: relative; z-index: 2;
+      width: 100%;
+      padding: 0 max(1.5rem, calc((100vw - 1160px) / 2));
+    }
+    .hero-content {
+      max-width: 500px;
+    }
+    .hero h1 {
+      font-size: clamp(2.1rem, 4.2vw, 3.4rem);
+      margin-bottom: 1rem;
+      animation: fade-up 0.65s 0.1s both;
+    }
+    .hero p {
+      font-size: 1rem; color: var(--muted2);
+      max-width: 500px; margin-bottom: 2.2rem;
+      animation: fade-up 0.65s 0.2s both;
+    }
+    .hero-stats {
+      display: flex; gap: 2rem; margin-bottom: 2.2rem;
+      animation: fade-up 0.65s 0.3s both;
+    }
+    .stat strong {
+      display: block; font-family: var(--font-h);
+      font-size: 1.8rem; font-weight: 800; color: var(--white); line-height: 1;
+    }
+    .stat span { font-size: 0.75rem; color: var(--muted2); }
+    .hero-btns { display: flex; gap: 0.85rem; flex-wrap: wrap; animation: fade-up 0.65s 0.4s both; }
+
+    
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3rem; align-items: center;
+    }
+    .about-img-wrap {
+      position: relative; border-radius: 16px; overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+    .about-img-wrap img { width:100%; height:100%; object-fit: cover; }
+    .about-img-wrap::after {
+      content:'';position:absolute;inset:0;
+      background: linear-gradient(135deg, rgba(37,99,235,0.25), transparent);
+    }
+    .about-img-frame {
+      position: absolute; inset: -1px; border-radius: 16px;
+      border: 1px solid rgba(37,99,235,0.28); z-index:2; pointer-events:none;
+    }
+    .about-badge {
+      position: absolute; bottom:1.2rem; left:1.2rem; z-index:3;
+      background: rgba(4,7,15,0.92); border: 1px solid rgba(37,99,235,0.35);
+      border-radius: 10px; padding: 0.7rem 1rem; backdrop-filter: blur(12px);
+    }
+    .about-badge strong { display:block; font-size:1.3rem; color:var(--blue-l); font-family:var(--font-h); font-weight:800; }
+    .about-badge span { font-size:0.74rem; color:var(--muted2); }
+    .about-text h2 { margin-bottom: 0.9rem; }
+    .about-text p { color:var(--muted2); font-size:0.92rem; margin-bottom:0.85rem; }
+    .about-pills { display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:1.4rem; }
+
+    
+    .services-section { background: var(--bg2); }
+    .srv-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem;
+    }
+    .srv-card {
+      padding: 1.35rem 1.4rem; position:relative; overflow:hidden;
+      border-top: 2px solid rgba(37,99,235,0.2);
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      display: flex; flex-direction: column;
+    }
+    .srv-card:hover {
+      border-top-color: var(--cyan);
+      transform: translateY(-5px);
+      box-shadow: 0 12px 32px rgba(6,182,212,0.12);
+    }
+    .srv-card-top {
+      display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.7rem;
+    }
+    .srv-icon {
+      width:38px; height:38px; border-radius:8px; flex-shrink:0;
+      background: linear-gradient(135deg, rgba(37,99,235,0.2), rgba(6,182,212,0.1));
+      border: 1px solid rgba(6,182,212,0.2);
+      display:flex; align-items:center; justify-content:center; font-size:1.1rem;
+    }
+    .srv-card h3 { margin-bottom:0; font-size:0.95rem; color: var(--white); }
+    .srv-card p { color:var(--muted2); font-size:0.8rem; margin-bottom:0.7rem; line-height:1.55; }
+    .srv-list { display:flex; flex-direction:column; gap:0.22rem; flex-grow:1; }
+    .srv-list li { font-size:0.76rem; color:var(--muted2); display:flex; gap:0.38rem; align-items:baseline; }
+    .srv-list li::before { content:'▸'; color:var(--cyan); font-weight:700; flex-shrink:0; font-size:0.65rem; }
+    .srv-link {
+      display:inline-flex; align-items:center; gap:0.3rem;
+      font-size:0.78rem; font-weight:600; color:var(--blue-l); margin-top:0.75rem;
+      transition: gap 0.2s;
+    }
+    .srv-link:hover { gap:0.55rem; }
+    .srv-badge {
+      display:inline-block; margin-top:0.8rem;
+      font-size:0.62rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
+      color:var(--cyan); background:rgba(6,182,212,0.07); border:1px solid rgba(6,182,212,0.15);
+      border-radius:50px; padding:0.13rem 0.55rem; width: fit-content;
+    }
+
+    
+    .projects-section { }
+    .carousel-outer { overflow:hidden; border-radius:var(--r); }
+    .carousel-track { display:flex; transition: transform 0.5s cubic-bezier(.4,0,.2,1); }
+    .c-slide {
+      flex-shrink:0;
+      min-width: calc(25% - 0.85rem);
+      margin-right:1rem;
+      border-radius:var(--r); overflow:hidden;
+      position:relative;
+      height: 160px;
+      background: var(--bg3);
+    }
+    .c-slide img { width:100%; height:100%; object-fit:cover; object-position:top; transition:transform 0.4s; }
+    .c-slide:hover img { transform:scale(1.04); }
+    .c-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(to top, rgba(4,7,15,0.9) 0%, transparent 55%);
+    }
+    .c-info { position:absolute; bottom:1rem; left:1rem; z-index:2; }
+    .c-info h4 { font-size:0.92rem; margin-bottom:0.2rem; }
+    .c-info span { font-size:0.72rem; color:var(--cyan); }
+    .car-controls { display:flex; align-items:center; justify-content:center; gap:0.85rem; margin-top:1.5rem; }
+    .car-btn {
+      width:38px; height:38px; border-radius:50%;
+      background:rgba(255,255,255,0.06); border:1px solid var(--border);
+      color:var(--white); font-size:0.9rem; cursor:pointer;
+      display:flex; align-items:center; justify-content:center; transition:all 0.2s;
+    }
+    .car-btn:hover { background:var(--blue); border-color:var(--blue); }
+    .car-dots { display:flex; gap:0.35rem; }
+    .car-dot {
+      width:6px; height:6px; border-radius:50%;
+      background:var(--muted); border:none; cursor:pointer; transition:all 0.2s;
+    }
+    .car-dot.active { background:var(--blue-l); width:18px; border-radius:3px; }
+    .projects-cta { text-align:center; margin-top:2.5rem; }
+
+    
+    .testi-section { background:var(--bg2); }
+    .testi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem; }
+    .testi-card { padding:1.6rem; }
+    .testi-stars { display:flex; gap:0.18rem; margin-bottom:0.9rem; }
+    .testi-stars span { font-size:0.85rem; color:#f59e0b; }
+    .testi-text { color:var(--muted2); font-size:0.88rem; line-height:1.7; margin-bottom:1.1rem; font-style:italic; }
+    .testi-author { display:flex; align-items:center; gap:0.65rem; }
+    .testi-av {
+      width:40px; height:40px; border-radius:50%; flex-shrink:0;
+      background:linear-gradient(135deg,var(--blue),var(--cyan));
+      display:flex; align-items:center; justify-content:center;
+      font-family:var(--font-h); font-weight:800; font-size:0.88rem;
+    }
+    .testi-author strong { display:block; font-size:0.88rem; }
+    .testi-author em { font-size:0.76rem; color:var(--muted2); font-style:normal; }
+
+    
+    .cta-band {
+      padding:4.5rem 0; text-align:center;
+      background: linear-gradient(135deg, rgba(37,99,235,0.12), rgba(6,182,212,0.06));
+      border-top:1px solid rgba(37,99,235,0.18);
+      border-bottom:1px solid rgba(37,99,235,0.18);
+    }
+    .cta-band h2 { margin-bottom:0.65rem; }
+    .cta-band p { color:var(--muted2); margin-bottom:1.8rem; }
+    .cta-btns { display:flex; gap:0.85rem; justify-content:center; flex-wrap:wrap; }
+
+    
+    .how-section { }
+    .how-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; }
+    .steps { display:flex; flex-direction:column; gap:1.1rem; }
+    .step { display:flex; gap:1.1rem; align-items:flex-start; }
+    .step-n {
+      flex-shrink:0; width:38px; height:38px; border-radius:50%;
+      background:linear-gradient(135deg,var(--blue),#1d4ed8);
+      display:flex; align-items:center; justify-content:center;
+      font-family:var(--font-h); font-weight:800; font-size:0.85rem;
+      box-shadow:0 4px 14px rgba(37,99,235,0.35);
+    }
+    .step h4 { font-size:0.95rem; margin-bottom:0.2rem; }
+    .step p { color:var(--muted2); font-size:0.85rem; }
+    .why-list { display:flex; flex-direction:column; gap:1rem; }
+    .why-item {
+      display:flex; gap:0.9rem; align-items:flex-start;
+      background:rgba(255,255,255,0.025); border:1px solid var(--border);
+      border-radius:10px; padding:1.1rem; transition:border-color 0.2s;
+    }
+    .why-item:hover { border-color:rgba(37,99,235,0.22); }
+    .why-icon { font-size:1.35rem; flex-shrink:0; }
+    .why-item h4 { font-size:0.9rem; margin-bottom:0.18rem; }
+    .why-item p { color:var(--muted2); font-size:0.83rem; }
+
+    
+    @media(max-width:1024px){
+      .srv-grid { grid-template-columns:repeat(2,1fr); }
+      .testi-grid { grid-template-columns:repeat(2,1fr); }
+    }
+    @media(max-width:768px){
+      .about-grid, .how-grid { grid-template-columns:1fr; }
+      .srv-grid { grid-template-columns:1fr; }
+      .testi-grid { grid-template-columns:1fr; }
+      .hero-stats { gap:1.5rem; }
+      .stat strong { font-size:1.5rem; }
+      .c-slide { min-width:calc(50% - 1rem); }
+    }
+  </style>
 </head>
 <body>
 
-  <header class="header">
-    <div class="header-container">
+  <header class="header" id="hdr">
+    <div class="container header-inner">
       <a href="index.html" class="brand">
-        <img src="imagenes/logo.png" alt="Logo InfraTech" class="brand-logo">
-        <span class="logo"> InfraTech</span>
+        <img src="imagenes/logo.png" alt="Logo Q&L InfraTech">
+        <span class="brand-name">InfraTech</span>
       </a>
-      <nav class="nav">
+      <nav id="nav">
         <a href="index.html" class="nav-link active">Inicio</a>
         <a href="servicios.html" class="nav-link">Servicios</a>
         <a href="contacto.html" class="nav-link">Contacto</a>
+        <a href="https://wa.me/51914522586?text=Hola" target="_blank" class="nav-wa">💬 WhatsApp</a>
       </nav>
-      <button class="menu-toggle" aria-label="Menú">
+      <button class="hamburger" id="hmb" aria-label="Menú">
         <span></span><span></span><span></span>
       </button>
     </div>
+    <div class="mob-nav" id="mobnav">
+      <a href="index.html" class="nav-link">Inicio</a>
+      <a href="servicios.html" class="nav-link">Servicios</a>
+      <a href="contacto.html" class="nav-link">Contacto</a>
+    </div>
   </header>
 
-  <section class="hero-banner">
-    <div class="hero-bg-image" style="background-image: url('imagenes/imagen1')"></div>
-    <div class="hero-overlay"></div>
-    <div class="hero-content-wrap centered">
-      <div class="hero-content centered-content">
+  <!-- ======== HERO ======== -->
+  <section class="hero" id="inicio">
+    <div class="hero-bg"></div>
+    <div class="hero-grid-lines"></div>
+    <div class="hero-inner">
+      <div class="hero-content">
         <h1>Construimos el futuro con <span class="gradient-text">innovación</span> y precisión</h1>
-        <p>Infraestructura, telecomunicaciones, sistemas eléctricos, obras civiles y desarrollo de software. Lo que necesitas, lo hacemos realidad.</p>
+        <p>Sistemas POS, páginas web, portafolios, telecomunicaciones y más. Lo que necesitas, lo hacemos realidad.</p>
         <div class="hero-stats">
-          <div class="stat"><strong>+50</strong><span>Proyectos entregados</span></div>
+          <div class="stat"><strong>+20</strong><span>Proyectos entregados</span></div>
           <div class="stat"><strong>100%</strong><span>Personalizados</span></div>
           <div class="stat"><strong>24/7</strong><span>Soporte directo</span></div>
         </div>
-        <div class="hero-buttons">
-          <a href="servicios.html" class="btn-primary">Ver todos los servicios</a>
-          <a href="contacto.html" class="btn-outline">💬 Hablar por WhatsApp</a>
+        <div class="hero-btns">
+          <a href="servicios.html" class="btn btn-blue">🚀 Ver servicios</a>
+          <a href="https://wa.me/51914522586?text=Hola,%20quiero%20información%20sobre%20sus%20servicios" target="_blank" class="btn btn-ghost">💬 Hablar por WhatsApp</a>
         </div>
       </div>
     </div>
-    <div class="floating-emojis">
-      <span class="fem f1">🚀</span>
-      <span class="fem f2">🏗️</span>
-      <span class="fem f3">⭐</span>
-      <span class="fem f4">🔌</span>
-      <span class="fem f5">✨</span>
-      <span class="fem f6">🔥</span>
-    </div>
   </section>
 
-  <section class="empresa-section">
+  <!-- ======== QUIÉNES SOMOS ======== -->
+  <section id="nosotros">
     <div class="container">
-      <div class="empresa-inner">
-        <span class="section-tag">Quiénes somos</span>
-        <h2 class="section-title" style="margin-bottom:1.5rem;">Q&L InfraTech</h2>
-        <p>Somos una empresa innovadora dedicada al desarrollo de proyectos de infraestructura, redes de telecomunicaciones, sistemas eléctricos, obras civiles y elaboración de proyectos. Además, contamos con un área especializada en desarrollo de software a medida.</p>
-        <p>Nuestro equipo combina experiencia técnica y visión innovadora para ofrecer soluciones integrales que transforman los proyectos de nuestros clientes en resultados concretos, eficientes y duraderos.</p>
-        <div class="empresa-pills">
-          <span class="empresa-pill">🏗️ Infraestructura</span>
-          <span class="empresa-pill">📡 Telecomunicaciones</span>
-          <span class="empresa-pill">⚡ Sistemas Eléctricos</span>
-          <span class="empresa-pill">🏢 Obras Civiles</span>
-          <span class="empresa-pill">💻 Desarrollo de Software</span>
-          <span class="empresa-pill">📋 Elaboración de Proyectos</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="carousel-section">
-    <div class="carousel-header">
-      <span class="section-tag">Portafolio</span>
-      <h2 class="section-title">Proyectos Recientes</h2>
-      <p class="section-sub">Mira algunos de los trabajos que hemos entregado</p>
-    </div>
-    <div class="carousel-wrapper">
-      <div class="carousel-track" id="carouselTrack">
-        <div class="carousel-slide">
-          <img src="assets/portafolio1.png" alt="Portafolio fotográfico">
-          <div class="slide-info"><h4>Portafolio Fotográfico</h4><span>Personal</span></div>
-        </div>
-        <div class="carousel-slide">
-          <img src="assets/amor1.png" alt="Página romántica">
-          <div class="slide-info"><h4>Página Romántica</h4><span>Especial</span></div>
-        </div>
-        <div class="carousel-slide">
-          <img src="assets/musico2.png" alt="Página de músico">
-          <div class="slide-info"><h4>Músico Profesional</h4><span>Personal</span></div>
-        </div>
-        <div class="carousel-slide">
-          <img src="assets/ropa1.png" alt="Tienda de ropa">
-          <div class="slide-info"><h4>Tienda de Ropa</h4><span>Negocio</span></div>
-        </div>
-        <div class="carousel-slide">
-          <img src="assets/restaurante1.png" alt="Restaurante">
-          <div class="slide-info"><h4>Restaurante con Menú Digital</h4><span>Negocio</span></div>
-        </div>
-        <div class="carousel-slide">
-          <img src="assets/tecnologia1.png" alt="Tienda tecnológica">
-          <div class="slide-info"><h4>Tienda Tecnológica con Login</h4><span>Sistema</span></div>
-        </div>
-        <div class="carousel-slide">
-          <img src="assets/portafolio2.png" alt="Portafolio 2">
-          <div class="slide-info"><h4>Portafolio Creativo</h4><span>Personal</span></div>
-        </div>
-        <div class="carousel-slide">
-          <img src="assets/restaurante2.png" alt="Restaurante 2">
-          <div class="slide-info"><h4>Carta Digital Interactiva</h4><span>Negocio</span></div>
-        </div>
-      </div>
-    </div>
-    <div class="carousel-controls">
-      <button class="car-btn" id="prevBtn">&#8592;</button>
-      <div class="car-dots" id="carDots"></div>
-      <button class="car-btn" id="nextBtn">&#8594;</button>
-    </div>
-  </section>
-
-  <section class="what-section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Capacidades</span>
-        <h2 class="section-title">Todo lo que podemos construir para ti <span class="emoji-spin">🛠️</span></h2>
-        <p class="section-sub">Infraestructura técnica, sistemas digitales, páginas web y soluciones con IA</p>
-      </div>
-      <div class="capabilities-grid">
-        <div class="cap-card featured">
-          <div class="cap-icon emoji-pulse">🏗️</div>
-          <h3>Proyectos de Infraestructura</h3>
-          <p>Redes de telecomunicaciones, sistemas eléctricos, obras civiles y elaboración de expedientes técnicos completos.</p>
-          <ul class="cap-features">
-            <li>✓ Redes de telecomunicaciones</li>
-            <li>✓ Diseño de sistemas eléctricos</li>
-            <li>✓ Obras civiles y construcción</li>
-            <li>✓ Elaboración de expedientes técnicos</li>
-            <li>✓ Consultoría y supervisión</li>
-          </ul>
-          <span class="cap-badge">Infraestructura</span>
-        </div>
-        <div class="cap-card featured">
-          <div class="cap-icon emoji-pulse">🖥️</div>
-          <h3>Sistemas POS</h3>
-          <p>Sistema de punto de venta completo con inventario, ventas, reportes y más. Ideal para tiendas, restaurantes y negocios.</p>
-          <ul class="cap-features">
-            <li>✓ Control de inventario en tiempo real</li>
-            <li>✓ Gestión de ventas y facturas</li>
-            <li>✓ Reportes y estadísticas</li>
-            <li>✓ Múltiples usuarios con roles</li>
-            <li>✓ Panel de administración</li>
-          </ul>
-          <span class="cap-badge">Sistema complejo</span>
-        </div>
-        <div class="cap-card featured">
-          <div class="cap-icon emoji-pulse">🛒</div>
-          <h3>Tiendas Online</h3>
-          <p>Tienda virtual completa donde tus clientes pueden ver productos, hacer pedidos y contactarte directamente.</p>
-          <ul class="cap-features">
-            <li>✓ Catálogo de productos dinámico</li>
-            <li>✓ Carrito de compras</li>
-            <li>✓ Integración con WhatsApp</li>
-            <li>✓ Panel de gestión de productos</li>
-            <li>✓ Diseño adaptable al celular</li>
-          </ul>
-          <span class="cap-badge">Ecommerce</span>
-        </div>
-        <div class="cap-card">
-          <div class="cap-icon">🤖</div>
-          <h3>Soluciones con IA</h3>
-          <p>Integración de inteligencia artificial en tus sistemas y páginas: chatbots, automatización y análisis de datos.</p>
-          <ul class="cap-features">
-            <li>✓ Chatbots inteligentes</li>
-            <li>✓ Automatización de procesos</li>
-            <li>✓ Análisis y predicción de datos</li>
-          </ul>
-          <a href="contacto.html" class="cap-link">Consultar →</a>
-        </div>
-        <div class="cap-card">
-          <div class="cap-icon">📱</div>
-          <h3>Páginas Web para Negocios</h3>
-          <p>Landing pages para empresas, emprendimientos, restaurantes, salones y más. Diseño profesional y moderno.</p>
-          <ul class="cap-features">
-            <li>✓ Diseño profesional y moderno</li>
-            <li>✓ Galería de productos/servicios</li>
-            <li>✓ Botones de contacto directo</li>
-          </ul>
-          <a href="servicios.html" class="cap-link">Ver servicios →</a>
-        </div>
-        <div class="cap-card">
-          <div class="cap-icon">✨</div>
-          <h3>Páginas Especiales y Personales</h3>
-          <p>Portafolios creativos, páginas para cumpleaños, aniversarios, artistas, músicos y profesionales independientes.</p>
-          <ul class="cap-features">
-            <li>✓ Diseño totalmente personalizado</li>
-            <li>✓ Fotos, música y animaciones</li>
-            <li>✓ Acceso desde cualquier dispositivo</li>
-          </ul>
-          <a href="servicios.html" class="cap-link">Ver servicios →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="features-section" style="background-image: url('imagenes/imagen2'); background-size: cover; background-position: center; position: relative;">
-    <div class="section-bg-overlay"></div>
-    <div class="container" style="position:relative;z-index:2;">
-      <div class="features-layout">
-        <div class="features-left">
-          <h2>¿Por qué elegirnos?</h2>
-          <div class="feature-list">
-            <div class="feature-item">
-              <span>🎯</span>
-              <div><h4>Soluciones a medida</h4><p>Cada proyecto se adapta exactamente a las necesidades del cliente, sin plantillas genéricas.</p></div>
-            </div>
-            <div class="feature-item">
-              <span>⚡</span>
-              <div><h4>Entrega puntual</h4><p>Cumplimos los plazos acordados. El tiempo de nuestros clientes es tan valioso como el nuestro.</p></div>
-            </div>
-            <div class="feature-item">
-              <span>💡</span>
-              <div><h4>Innovación constante</h4><p>Aplicamos las últimas tecnologías y metodologías para ofrecer soluciones eficientes y modernas.</p></div>
-            </div>
-            <div class="feature-item">
-              <span>🔧</span>
-              <div><h4>Soporte y revisiones incluidas</h4><p>Incluimos revisiones y ajustes post-entrega para que quedes 100% satisfecho.</p></div>
-            </div>
+      <div class="about-grid reveal">
+        <div class="about-img-wrap">
+          <img src="imagenes/inicio.png" alt="Equipo Q&L InfraTech en obra">
+          <div class="about-img-frame"></div>
+          <div class="about-badge">
+            <strong>+20</strong>
+            <span>Proyectos entregados</span>
           </div>
         </div>
-        <div class="features-right">
-          <h2>Proceso de trabajo</h2>
+        <div class="about-text">
+          <span class="tag">Quiénes somos</span>
+          <h2>Q&amp;L <span class="gradient-text">InfraTech</span></h2>
+          <p>Somos una empresa innovadora dedicada al desarrollo de proyectos, redes de telecomunicaciones, sistemas eléctricos y elaboración de expedientes técnicos.</p>
+          <p>También contamos con un área especializada en desarrollo de software: sistemas POS, páginas web, tiendas online, portafolios personales y soluciones con inteligencia artificial.</p>
+          <div class="about-pills">
+            <span class="pill">🛠️ Sistemas POS</span>
+            <span class="pill">📡 Telecomunicaciones</span>
+            <span class="pill">⚡ Sistemas Eléctricos</span>
+            <span class="pill">💻 Desarrollo de Software</span>
+            <span class="pill">🤖 Automatización IA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== SERVICIOS ======== -->
+  <section class="services-section" id="servicios">
+    <div class="container">
+      <div class="section-header center reveal">
+        <span class="tag">Servicios</span>
+        <h2>Todo lo que podemos hacer <span class="gradient-text">por ti</span></h2>
+        <p class="sub">Desde tu sistema de ventas hasta tu red de telecomunicaciones. Lo construimos.</p>
+      </div>
+      <div class="srv-grid reveal">
+
+        <div class="card srv-card">
+          <div class="srv-card-top">
+            <div class="srv-icon">🖥️</div>
+            <h3>Sistemas POS</h3>
+          </div>
+          <p>Control de ventas, inventario y reportes en tiempo real para tiendas, restaurantes y negocios.</p>
+          <ul class="srv-list">
+            <li>Inventario en tiempo real</li>
+            <li>Ventas y facturación</li>
+            <li>Reportes y estadísticas</li>
+            <li>Múltiples usuarios</li>
+          </ul>
+          <span class="srv-badge">Sistema</span>
+        </div>
+
+        <div class="card srv-card">
+          <div class="srv-card-top">
+            <div class="srv-icon">📱</div>
+            <h3>Páginas Web para Negocios</h3>
+          </div>
+          <p>Landing pages profesionales para empresas, restaurantes, emprendimientos y salones.</p>
+          <ul class="srv-list">
+            <li>Diseño profesional y moderno</li>
+            <li>Catálogo de productos</li>
+            <li>Botón WhatsApp integrado</li>
+            <li>100% responsive</li>
+          </ul>
+          <span class="srv-badge">Web</span>
+        </div>
+
+        <div class="card srv-card">
+          <div class="srv-card-top">
+            <div class="srv-icon">✨</div>
+            <h3>Portafolios Personales</h3>
+          </div>
+          <p>Portafolios creativos para fotógrafos, músicos, artistas y profesionales independientes.</p>
+          <ul class="srv-list">
+            <li>Diseño totalmente personalizado</li>
+            <li>Galerías con lightbox</li>
+            <li>Sección de servicios y contacto</li>
+            <li>Entrega en 3-5 días</li>
+          </ul>
+          <span class="srv-badge">Personal</span>
+        </div>
+
+        <div class="card srv-card">
+          <div class="srv-card-top">
+            <div class="srv-icon">🛒</div>
+            <h3>Tiendas Online</h3>
+          </div>
+          <p>Ecommerce completo con carrito de compras, filtros de productos y pedidos por WhatsApp.</p>
+          <ul class="srv-list">
+            <li>Catálogo dinámico con filtros</li>
+            <li>Carrito de compras</li>
+            <li>Panel de gestión</li>
+            <li>Integración WhatsApp</li>
+          </ul>
+          <span class="srv-badge">Ecommerce</span>
+        </div>
+
+        <div class="card srv-card">
+          <div class="srv-card-top">
+            <div class="srv-icon">🤖</div>
+            <h3>Automatización con IA</h3>
+          </div>
+          <p>Chatbots inteligentes, automatización de procesos y análisis de datos para tu negocio.</p>
+          <ul class="srv-list">
+            <li>Chatbots con IA</li>
+            <li>Automatización de tareas</li>
+            <li>Análisis y predicción de datos</li>
+          </ul>
+          <a href="contacto.html" class="srv-link">Consultar →</a>
+        </div>
+
+        <div class="card srv-card">
+          <div class="srv-card-top">
+            <div class="srv-icon">🏗️</div>
+            <h3>Infraestructura</h3>
+          </div>
+          <p>Telecomunicaciones, sistemas eléctricos y elaboración de expedientes técnicos.</p>
+          <ul class="srv-list">
+            <li>Redes de telecomunicaciones</li>
+            <li>Diseño de sistemas eléctricos</li>
+            <li>Expedientes técnicos</li>
+          </ul>
+          <span class="srv-badge">Infraestructura</span>
+        </div>
+
+      </div>
+      <div style="text-align:center;margin-top:2.5rem;" class="reveal">
+        <a href="servicios.html" class="btn btn-outline-cyan">Ver todos los servicios →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== PROYECTOS (PREVIEW) ======== -->
+  <section id="proyectos">
+    <div class="container">
+      <div class="section-header center reveal">
+        <span class="tag">Portafolio</span>
+        <h2>Proyectos <span class="gradient-text">Recientes</span></h2>
+        <p class="sub">Una muestra de lo que hemos entregado</p>
+      </div>
+      <div class="carousel-outer reveal">
+        <div class="carousel-track" id="carTrack">
+          <div class="c-slide">
+            <img src="assets/restaurante2.png" alt="Carta Digital" onerror="this.src='https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80'">
+            <div class="c-overlay"></div>
+            <div class="c-info"><h4>Carta Digital Interactiva</h4><span>Negocio</span></div>
+          </div>
+          <div class="c-slide">
+            <img src="assets/tecnologia1.png" alt="Tienda con login" onerror="this.src='https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=600&q=80'">
+            <div class="c-overlay"></div>
+            <div class="c-info"><h4>Tienda Tecnológica + Login</h4><span>Sistema</span></div>
+          </div>
+          <div class="c-slide">
+            <img src="assets/portafolio1.png" alt="Portafolio fotográfico" onerror="this.src='https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=600&q=80'">
+            <div class="c-overlay"></div>
+            <div class="c-info"><h4>Portafolio Fotográfico</h4><span>Personal</span></div>
+          </div>
+          <div class="c-slide">
+            <img src="assets/ropa1.png" alt="Tienda de ropa" onerror="this.src='https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=600&q=80'">
+            <div class="c-overlay"></div>
+            <div class="c-info"><h4>Tienda de Ropa Online</h4><span>Negocio</span></div>
+          </div>
+          <div class="c-slide">
+            <img src="assets/musico2.png" alt="Músico profesional" onerror="this.src='https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&q=80'">
+            <div class="c-overlay"></div>
+            <div class="c-info"><h4>Músico Profesional</h4><span>Personal</span></div>
+          </div>
+          <div class="c-slide">
+            <img src="assets/amor1.png" alt="Página romántica" onerror="this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=600&q=80'">
+            <div class="c-overlay"></div>
+            <div class="c-info"><h4>Página Romántica Especial</h4><span>Especial</span></div>
+          </div>
+          <div class="c-slide">
+            <img src="assets/portafolio2.png" alt="Portafolio creativo" onerror="this.src='https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&q=80'">
+            <div class="c-overlay"></div>
+            <div class="c-info"><h4>Portafolio Creativo</h4><span>Personal</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="car-controls">
+        <button class="car-btn" id="prevBtn">&#8592;</button>
+        <div class="car-dots" id="carDots"></div>
+        <button class="car-btn" id="nextBtn">&#8594;</button>
+      </div>
+      <div class="projects-cta reveal">
+        <a href="proyectos.html" class="btn btn-outline-cyan">Ver todos los proyectos →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== CÓMO TRABAJAMOS ======== -->
+  <section class="how-section" style="background:var(--bg2);">
+    <div class="container">
+      <div class="section-header center reveal">
+        <span class="tag">Proceso</span>
+        <h2>¿Cómo <span class="gradient-text">trabajamos?</span></h2>
+      </div>
+      <div class="how-grid reveal">
+        <div>
+          <h3 style="margin-bottom:1.25rem;font-size:1.1rem;color:var(--muted2);font-weight:600;">Paso a paso</h3>
           <div class="steps">
-            <div class="step"><span class="step-num">1</span><div><h4>Consulta inicial gratis</h4><p>Nos cuentas tu idea y evaluamos qué solución es la mejor para ti.</p></div></div>
-            <div class="step"><span class="step-num">2</span><div><h4>Propuesta y presupuesto</h4><p>Te enviamos una propuesta clara con tiempos, funcionalidades y precio.</p></div></div>
-            <div class="step"><span class="step-num">3</span><div><h4>Diseño y desarrollo</h4><p>Comenzamos el trabajo y te compartimos avances para que puedas dar feedback.</p></div></div>
-            <div class="step"><span class="step-num">4</span><div><h4>Revisiones y entrega</h4><p>Ajustamos detalles y te entregamos tu proyecto listo para usar.</p></div></div>
-            <div class="step"><span class="step-num">5</span><div><h4>Soporte post-entrega</h4><p>Estamos disponibles para ayudarte si surge cualquier duda o cambio.</p></div></div>
+            <div class="step"><div class="step-n">1</div><div><h4>Consulta inicial gratis</h4><p>Nos cuentas tu idea y evaluamos qué solución es la mejor para ti.</p></div></div>
+            <div class="step"><div class="step-n">2</div><div><h4>Propuesta y presupuesto</h4><p>Te enviamos una propuesta clara con tiempos, funcionalidades y precio.</p></div></div>
+            <div class="step"><div class="step-n">3</div><div><h4>Diseño y desarrollo</h4><p>Comenzamos el trabajo y te compartimos avances para tu feedback.</p></div></div>
+            <div class="step"><div class="step-n">4</div><div><h4>Revisiones y entrega</h4><p>Ajustamos detalles y te entregamos tu proyecto listo para usar.</p></div></div>
+            <div class="step"><div class="step-n">5</div><div><h4>Soporte post-entrega</h4><p>Seguimos disponibles si surge cualquier duda o ajuste.</p></div></div>
+          </div>
+        </div>
+        <div>
+          <h3 style="margin-bottom:1.25rem;font-size:1.1rem;color:var(--muted2);font-weight:600;">Por qué elegirnos</h3>
+          <div class="why-list">
+            <div class="why-item"><div class="why-icon">🎯</div><div><h4>Soluciones a medida</h4><p>Cada proyecto se adapta exactamente a las necesidades del cliente, sin plantillas genéricas.</p></div></div>
+            <div class="why-item"><div class="why-icon">⚡</div><div><h4>Entrega puntual</h4><p>Cumplimos los plazos acordados. El tiempo de nuestros clientes es tan valioso como el nuestro.</p></div></div>
+            <div class="why-item"><div class="why-icon">💡</div><div><h4>Innovación constante</h4><p>Aplicamos las últimas tecnologías para soluciones eficientes y modernas.</p></div></div>
+            <div class="why-item"><div class="why-icon">🔧</div><div><h4>Soporte incluido</h4><p>Revisiones y ajustes post-entrega incluidos para que quedes 100% satisfecho.</p></div></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="pricing-section">
+  <!-- ======== TESTIMONIOS ======== -->
+  <section class="testi-section" id="testimonios">
     <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Inversión</span>
-        <h2 class="section-title">Rangos de precio según proyecto <span class="emoji-pulse">💰</span></h2>
-        <p class="section-sub">Los precios finales se definen según tus necesidades. Consulta completamente gratis.</p>
+      <div class="section-header center reveal">
+        <span class="tag">Testimonios</span>
+        <h2>Lo que dicen <span class="gradient-text">nuestros clientes</span></h2>
+        <p class="sub">La confianza de quienes trabajaron con nosotros es nuestro mayor orgullo</p>
       </div>
-      <div class="pricing-grid">
-        <div class="price-card">
-          <div class="price-icon">📄</div>
-          <h3>Página Básica</h3>
-          <p>Presentación, portafolio o página especial</p>
-          <div class="price-range">Desde <strong>S/ 400</strong></div>
-          <ul><li>✓ Diseño personalizado</li><li>✓ Responsive (celular y PC)</li><li>✓ Entrega en 3-5 días</li></ul>
-          <a href="contacto.html" class="btn-price">Consultar gratis</a>
-        </div>
-        <div class="price-card highlighted">
-          <div class="badge-popular">Más pedido</div>
-          <div class="price-icon">🏪</div>
-          <h3>Página de Negocio</h3>
-          <p>Tienda, restaurante, empresa o emprendimiento</p>
-          <div class="price-range">Desde <strong>S/ 1000</strong></div>
-          <ul><li>✓ Catálogo de productos</li><li>✓ Botón WhatsApp integrado</li><li>✓ Galería de fotos</li><li>✓ Entrega en 5-7 días</li></ul>
-          <a href="contacto.html" class="btn-price">Consultar gratis</a>
-        </div>
-        <div class="price-card">
-          <div class="price-icon">⚙️</div>
-          <h3>Sistema / App Web</h3>
-          <p>POS, tienda online, sistema a medida</p>
-          <div class="price-range">Desde <strong>S/ 2000</strong></div>
-          <ul><li>✓ Base de datos</li><li>✓ Panel de administración</li><li>✓ Usuarios y roles</li><li>✓ Plazo según complejidad</li></ul>
-          <a href="contacto.html" class="btn-price">Consultar gratis</a>
-        </div>
-        <div class="price-card">
-          <div class="price-icon">🏗️</div>
-          <h3>Proyectos de Infraestructura</h3>
-          <p>Telecomunicaciones, sistemas eléctricos, obras civiles y elaboración de proyectos técnicos</p>
-          <div class="price-range" style="font-size:0.85rem;padding:1rem;">
-            <strong style="font-size:1.1rem;display:block;margin-bottom:0.4rem;">Cotización personalizada</strong>
-            Evaluación según alcance y requerimientos del proyecto
+      <div class="testi-grid reveal">
+        <div class="card testi-card">
+          <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <p class="testi-text">Nos apoyaron con el expediente técnico de nuestra red de telecomunicaciones. Muy profesionales, cumplieron con los plazos y fue aprobado sin observaciones.</p>
+          <div class="testi-author">
+            <div class="testi-av" style="background:linear-gradient(135deg,#06b6d4,#0891b2)">LM</div>
+            <div><strong>Lucía Ramos Flores</strong><em>Municipalidad Distrital · Ayacucho</em></div>
           </div>
-          <ul><li>✓ Evaluación técnica gratuita</li><li>✓ Propuesta detallada</li><li>✓ Sin compromiso</li></ul>
-          <a href="https://wa.me/51914522586?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20proyectos%20de%20infraestructura" class="btn-price" target="_blank">💬 Consultar por WhatsApp</a>
+        </div>
+        <div class="card testi-card">
+          <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <p class="testi-text">Me hicieron una tienda virtual para mi ropa. Mis clientes pueden ver los productos y pedir por WhatsApp. Las ventas aumentaron bastante desde que la lancé.</p>
+          <div class="testi-author">
+            <div class="testi-av" style="background:linear-gradient(135deg,#818cf8,#6366f1)">KV</div>
+            <div><strong>Karol Villanueva Chávez</strong><em>Boutique Karo Fashion · Lima</em></div>
+          </div>
+        </div>
+        <div class="card testi-card">
+          <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <p class="testi-text">El sistema POS cambió cómo manejamos nuestra tienda. Antes todo era en cuadernos, ahora tenemos control de inventario, ventas diarias y reportes. Excelente trabajo.</p>
+          <div class="testi-author">
+            <div class="testi-av" style="background:linear-gradient(135deg,#f59e0b,#d97706)">RP</div>
+            <div><strong>Maximo pari lizana</strong><em>Max Sport · Huancavelica</em></div>
+          </div>
+        </div>
+        <div class="card testi-card">
+          <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <p class="testi-text">"Mi portafolio como fotógrafa quedó increíble. Muy creativos, escucharon exactamente lo que quería. Ahora presento mi trabajo a clientes con mucha más confianza."</p>
+          <div class="testi-author">
+            <div class="testi-av" style="background:linear-gradient(135deg,#ec4899,#be185d)">CE</div>
+            <div><strong>Juan Perez Huanca</strong><em>Fotógrafa Profesional · Cusco</em></div>
+          </div>
+        </div>
+        <div class="card testi-card">
+          <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <p class="testi-text">"Contratamos el diseño eléctrico para nuestra sede. Muy técnicos y ordenados. Entregaron planos y expediente a tiempo con todo lo que pedimos. Los volvemos a contratar."</p>
+          <div class="testi-author">
+            <div class="testi-av" style="background:linear-gradient(135deg,#10b981,#059669)">AT</div>
+            <div><strong>Arturo Torres Mendoza</strong><em>Constructora Andina S.A.C. · Junín</em></div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="cta-section" style="background-image: url('imagenes/imagen3'); background-size: cover; background-position: center; position: relative;">
-    <div class="section-bg-overlay" style="background: rgba(5,8,16,0.82);"></div>
-    <div class="container" style="position:relative;z-index:2;">
-      <div class="cta-box">
-        <h2>¿Tienes un proyecto? Hagámoslo realidad <span class="emoji-bounce">🚀</span></h2>
-        <p>Cuéntanos tu idea y recibe una propuesta sin costo ni compromiso</p>
-        <a href="https://wa.me/51914522586?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20sus%20servicios" class="btn-cta" target="_blank">💬 Hablar por WhatsApp ahora</a>
+  <!-- ======== CTA ======== -->
+  <div class="cta-band">
+    <div class="container">
+      <h2>¿Listo para empezar? <span class="gradient-text">Hagámoslo realidad 🚀</span></h2>
+      <p>Cuéntanos tu idea y recibe una propuesta sin costo ni compromiso</p>
+      <div class="cta-btns">
+        <a href="https://wa.me/51914522586?text=Hola,%20quiero%20información%20sobre%20sus%20servicios" target="_blank" class="btn btn-blue">💬 Hablar por WhatsApp</a>
+        <a href="contacto.html" class="btn btn-ghost">📝 Enviar formulario</a>
       </div>
     </div>
-  </section>
+  </div>
 
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col">
-          <a href="index.html" class="brand" style="margin-bottom:0.75rem;display:inline-flex;">
-            <img src="imagenes/logo.png" alt="Logo" class="brand-logo">
-            <span class="logo">InfraTech</span>
+          <a href="index.html" class="brand" style="margin-bottom:0.9rem;display:inline-flex;">
+            <img src="imagenes/logo.png" alt="Logo" style="width:38px;height:38px;object-fit:contain;">
+            <span class="brand-name" style="font-size:0.98rem;">InfraTech</span>
           </a>
-          <p>Infraestructura, telecomunicaciones, sistemas eléctricos, obras civiles y desarrollo de software.</p>
+          <p>Telecomunicaciones, sistemas eléctricos, sistemas pos y desarrollo de software.</p>
         </div>
         <div class="footer-col">
           <h4>Navegación</h4>
-          <a href="index.html">Inicio</a>
-          <a href="servicios.html">Servicios</a>
-          <a href="contacto.html">Contacto</a>
+          <div class="footer-links">
+            <a href="index.html">Inicio</a>
+            <a href="servicios.html">Servicios</a>
+            <a href="contacto.html">Contacto</a>
+          </div>
         </div>
         <div class="footer-col">
           <h4>Servicios</h4>
-          <a href="servicios.html">Páginas para Negocios</a>
-          <a href="servicios.html">Páginas Especiales</a>
-          <a href="servicios.html">Páginas Personales</a>
-          <a href="servicios.html">Infraestructura</a>
-          <a href="contacto.html">Sistemas y Apps</a>
+          <div class="footer-links">
+            <a href="servicios.html">Sistemas POS</a>
+            <a href="servicios.html">Páginas Web</a>
+            <a href="servicios.html">Portafolios</a>
+            <a href="servicios.html">Tiendas Online</a>
+            <a href="servicios.html">Infraestructura</a>
+          </div>
         </div>
         <div class="footer-col">
           <h4>Contacto</h4>
-          <a href="https://wa.me/51914522586" target="_blank">📱 +51 914 522 586</a>
-          <p style="color:var(--text-muted);font-size:0.9rem;margin-top:0.5rem;">Respondemos en menos de 24h ⏰</p>
+          <div class="footer-links">
+            <a href="https://wa.me/51914522586" target="_blank">📱 +51 914 522 586</a>
+            <a href="contacto.html">✉️ Formulario de contacto</a>
+          </div>
+          <p style="margin-top:0.75rem;">Respondemos en menos de 24h ⏰</p>
         </div>
       </div>
       <div class="footer-bottom">
@@ -343,55 +626,51 @@
     </div>
   </footer>
 
-  <a href="https://wa.me/51914522586?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20sus%20servicios"
-     class="whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-    <svg viewBox="0 0 24 24" width="24" height="24">
-      <path fill="currentColor" d="M20.5 3.5A11.9 11.9 0 0 0 12 0C5.4 0 .3 5.1.3 11.7c0 2 .6 3.9 1.8 5.6L0 24l6.9-1.8c1.6 1 3.4 1.5 5.1 1.5 6.6 0 11.7-5.1 11.7-11.7 0-2.6-1-5-3.2-6.6zM12 21.5c-1.5 0-3-.4-4.3-1.1l-.3-.2-4 .9 1-4.1-.2-.3A8.9 8.9 0 0 1 3 11.7 8.9 8.9 0 0 1 12 2.8c4.9 0 8.8 4 8.8 8.9S16.9 21.5 12 21.5z"/>
-    </svg>
+  <a href="https://wa.me/51914522586?text=Hola,%20quiero%20información" class="wa-fab" target="_blank" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" width="26" height="26"><path fill="currentColor" d="M20.5 3.5A11.9 11.9 0 0 0 12 0C5.4 0 .3 5.1.3 11.7c0 2 .6 3.9 1.8 5.6L0 24l6.9-1.8c1.6 1 3.4 1.5 5.1 1.5 6.6 0 11.7-5.1 11.7-11.7 0-2.6-1-5-3.2-6.6zM12 21.5c-1.5 0-3-.4-4.3-1.1l-.3-.2-4 .9 1-4.1-.2-.3A8.9 8.9 0 0 1 3 11.7 8.9 8.9 0 0 1 12 2.8c4.9 0 8.8 4 8.8 8.9S16.9 21.5 12 21.5z"/></svg>
   </a>
 
-  <div class="lightbox" id="lightbox">
-    <span class="close-lightbox">&times;</span>
-    <img id="lightbox-img" src="" alt="">
-  </div>
-
-  <script src="script.js"></script>
   <script>
-    const track = document.getElementById('carouselTrack');
-    const slides = track ? track.querySelectorAll('.carousel-slide') : [];
-    const dotsContainer = document.getElementById('carDots');
-    let current = 0;
-    let autoPlay;
-    function getVisible() { return window.innerWidth < 640 ? 1 : window.innerWidth < 1024 ? 2 : 3; }
-    function totalPages() { return Math.ceil(slides.length / getVisible()); }
-    function buildDots() {
-      if (!dotsContainer) return;
-      dotsContainer.innerHTML = '';
-      for (let i = 0; i < totalPages(); i++) {
-        const d = document.createElement('button');
-        d.className = 'car-dot' + (i === current ? ' active' : '');
-        d.addEventListener('click', () => goTo(i));
-        dotsContainer.appendChild(d);
+    window.addEventListener('scroll', () => {
+      document.getElementById('hdr').style.boxShadow = window.scrollY > 40 ? '0 4px 28px rgba(0,0,0,0.5)' : '';
+    });
+    document.getElementById('hmb').addEventListener('click', () => {
+      document.getElementById('mobnav').classList.toggle('open');
+    });
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((e,i) => {
+        if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('visible'),i*70); obs.unobserve(e.target); }
+      });
+    },{threshold:0.07});
+    document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+    const track = document.getElementById('carTrack');
+    const slides = track?.querySelectorAll('.c-slide') || [];
+    const dots = document.getElementById('carDots');
+    let cur = 0, ap;
+    const vis = () => window.innerWidth < 640 ? 1 : window.innerWidth < 1024 ? 2 : 4;
+    const pages = () => Math.ceil(slides.length / vis());
+    const buildDots = () => {
+      dots.innerHTML = '';
+      for(let i=0;i<pages();i++){
+        const d=document.createElement('button');
+        d.className='car-dot'+(i===cur?' active':'');
+        d.onclick=()=>go(i); dots.appendChild(d);
       }
-    }
-    function goTo(idx) {
-      const pages = totalPages();
-      current = (idx + pages) % pages;
-      const visible = getVisible();
-      const slideW = track.parentElement.offsetWidth / visible;
-      track.style.transform = `translateX(-${current * visible * slideW}px)`;
+    };
+    const go = idx => {
+      cur=(idx+pages())%pages();
+      const w=track.parentElement.offsetWidth/vis();
+      track.style.transform=`translateX(-${cur*vis()*w}px)`;
       buildDots();
-    }
-    function next() { goTo(current + 1); }
-    function prev() { goTo(current - 1); }
-    if (track && slides.length) {
-      document.getElementById('nextBtn')?.addEventListener('click', () => { next(); resetAuto(); });
-      document.getElementById('prevBtn')?.addEventListener('click', () => { prev(); resetAuto(); });
+    };
+    if(slides.length){
+      document.getElementById('nextBtn').onclick=()=>{go(cur+1);reset();};
+      document.getElementById('prevBtn').onclick=()=>{go(cur-1);reset();};
       buildDots();
-      window.addEventListener('resize', () => goTo(0));
-      autoPlay = setInterval(next, 4000);
+      window.addEventListener('resize',()=>go(0));
+      ap=setInterval(()=>go(cur+1),4200);
     }
-    function resetAuto() { clearInterval(autoPlay); autoPlay = setInterval(next, 4000); }
+    const reset=()=>{clearInterval(ap);ap=setInterval(()=>go(cur+1),4200);};
   </script>
 </body>
 </html>
